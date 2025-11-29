@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Catálogo de productos de hardware - Encuentra los mejores productos al mejor precio">
+  <meta name="keywords" content="hardware, productos, tecnología, catálogo">
+  <title>Catálogo de Hardware - Productos de Calidad</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-content">
+        <h1>🔧 Catálogo de Hardware</h1>
+        <p class="subtitle">Encuentra los mejores productos de hardware al mejor precio</p>
+        <button class="btn-admin" id="adminBtn">
+          <span class="admin-icon">🔐</span>
+          <span>Admin</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Search & Filter Controls -->
+    <div class="controls" id="controls" style="display: none;">
+      <input 
+        type="text" 
+        class="search-box" 
+        id="searchBox" 
+        placeholder="🔍 Buscar productos..."
+      />
+      <select class="filter-select" id="filterSelect">
+        <option value="">Todas las categorías</option>
+      </select>
+    </div>
+
+    <!-- Products Section -->
+    <section class="products-section">
+      <div id="productsContainer">
+        <div class="empty-state">
+          <div class="empty-icon">📦</div>
+          <h3>No hay productos cargados</h3>
+          <p>Los productos aparecerán aquí una vez que el administrador los cargue</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+      <h2 class="contact-title">¿Interesado en nuestros productos?</h2>
+      <p>Contáctanos para más información y cotizaciones</p>
+      <div class="contact-info">
+        <a href="tel:+5491112345678" class="contact-item">
+          <span class="contact-icon">📞</span>
+          <span>+54 9 11 1234-5678</span>
+        </a>
+        <a href="https://wa.me/5491112345678" target="_blank" class="contact-item" style="background: linear-gradient(135deg, #25D366, #128C7E);">
+          <span class="contact-icon">💬</span>
+          <span>WhatsApp</span>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <!-- SheetJS Library -->
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+  
+  <!-- App Script (ES6 Module) -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>

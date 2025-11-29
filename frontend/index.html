@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="description" content="Catálogo de productos de hardware - Encuentra los mejores productos al mejor precio">
+  <title>Catálogo de Hardware</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+  
+  <!-- SheetJS Library for Excel parsing -->
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/main.css">
+  <link rel="stylesheet" href="/products-grid-fix.css">
+  <link rel="stylesheet" href="/button-patch.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2>TechHardware</h2>
+        <p class="brand-subtitle">Premium Hardware Store</p>
+      </div>
+      
+      <nav class="category-nav" id="categorySidebar">
+        <!-- Categories will be injected here -->
+        <div class="loading-categories">
+          <div class="spinner-small"></div>
+          <span>Cargando categorías...</span>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Top Header -->
+      <header class="top-header">
+        <div class="search-container">
+          <span class="search-icon">🔍</span>
+          <input 
+            type="text" 
+            class="search-input" 
+            id="searchBox" 
+            placeholder="Buscar productos..."
+          />
+        </div>
+        
+        <div class="header-actions">
+          <div id="cartIconContainer"></div>
+          <button class="btn-admin-header" id="adminBtn">
+            <span class="icon">🔐</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Content Scrollable Area -->
+      <div class="content-scroll">
+        <!-- Page Title & Sort -->
+        <div class="page-header">
+          <div class="page-title-group">
+            <h1 id="pageTitle">Todos los productos</h1>
+            <span class="product-count" id="productCount">Mostrando 0 productos</span>
+          </div>
+          <div class="sort-controls">
+            <select id="sortSelect" class="sort-select">
+              <option value="">Sin ordenar</option>
+              <option value="price-asc">Precio: Menor a Mayor</option>
+              <option value="price-desc">Precio: Mayor a Menor</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div id="productsContainer">
+          <div class="loading">
+            <div class="spinner"></div>
+            <p>Cargando productos...</p>
+          </div>
+        </div>
+
+        <!-- Contact Section (at bottom) -->
+        <section class="contact-section">
+          <h2 class="contact-title">¿Interesado?</h2>
+          <div class="contact-info">
+            <a href="tel:+543434803193" class="contact-item">
+              <span class="contact-icon">📞</span>
+              <span>+54 9 343 4803 193</span>
+            </a>
+            <a href="https://wa.me/543434803193" target="_blank" class="contact-item whatsapp">
+              <span class="contact-icon">💬</span>
+              <span>WhatsApp</span>
+            </a>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- App Script (ES6 Module) -->
+  <script type="module" src="/src/main.js?v=1"></script>
+</body>
+</html>
