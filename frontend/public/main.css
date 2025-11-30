@@ -511,36 +511,7 @@ body {
     transform: translateY(0);
 }
 
-.modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: var(--spacing-md);
-}
-
-.modal-title {
-    font-family: 'Outfit', sans-serif;
-    font-size: 1.5rem;
-}
-
-.btn-close {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--text-tertiary);
-}
-
-.form-group {
-    margin-bottom: var(--spacing-md);
-}
-
-.form-label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-    color: var(--text-secondary);
-}
+.modal-header {}
 
 .form-input {
     width: 100%;
@@ -1138,6 +1109,32 @@ body {
     font-size: 1.5rem;
     cursor: pointer;
     color: var(--text-secondary);
+}
+
+.modal-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+}
+
+.btn-close {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-tertiary);
+    z-index: 10;
+    transition: color var(--transition-base);
+}
+
+.btn-close:hover {
+    color: var(--error);
+}
+
+.form-group {
+    margin-bottom: var(--spacing-md);
 }
 
 .cart-modal-body {

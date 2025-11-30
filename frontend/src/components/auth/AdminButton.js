@@ -30,7 +30,7 @@ export class AdminButton {
     showLoggedOut() {
         this.button.innerHTML = `
       <span class="admin-icon">🔐</span>
-      <span>Admin</span>
+      <span>Login</span>
     `;
         this.button.classList.remove('logged-in');
     }
