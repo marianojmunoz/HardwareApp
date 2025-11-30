@@ -2,8 +2,9 @@ import { CartItem } from './CartItem.js';
 import { formatPrice } from '../../utils/formatters.js';
 
 export class Cart {
-    constructor(cartService) {
+    constructor(cartService, checkoutService) {
         this.cartService = cartService;
+        this.checkoutService = checkoutService;
         this.isOpen = false;
         this.createModal();
         this.setupListeners();
@@ -100,10 +101,20 @@ export class Cart {
             }
         });
 
-        // Checkout button (placeholder)
+        // Checkout button
         const checkoutBtn = modal.querySelector('#checkoutBtn');
-        checkoutBtn?.addEventListener('click', () => {
-            alert('Funcionalidad de checkout en desarrollo.\n\nPróximamente podrás finalizar tu compra.');
+        checkoutBtn?.addEventListener('click', async () => {
+            try {
+                const items = this.cartService.getItems();
+                await this.checkoutService.processCheckout(items);
+
+                // Optional: Clear cart after successful checkout?
+                // For now, we keep it so user can see what they ordered or re-order
+                // this.cartService.clearCart();
+                // this.hide();
+            } catch (error) {
+                alert(error.message);
+            }
         });
     }
 

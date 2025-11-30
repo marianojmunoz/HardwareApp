@@ -10,6 +10,7 @@ import { ImageUploader } from './infrastructure/parsers/ImageUploader.js';
 // Services
 import { ProductService } from './services/ProductService.js';
 import { UploadService } from './services/UploadService.js';
+import { CheckoutService } from './services/CheckoutService.js';
 import { CartService } from './services/CartService.js';
 
 // Components
@@ -35,6 +36,7 @@ class HardwareCatalogApp {
         this.productService = new ProductService(this.productRepo);
         this.uploadService = new UploadService(this.excelParser, this.productRepo);
         this.cartService = new CartService();
+        this.checkoutService = new CheckoutService();
 
         // Initialize components
         this.productGrid = new ProductGrid('productsContainer');
@@ -44,7 +46,7 @@ class HardwareCatalogApp {
         this.uploadSummaryModal = new UploadSummaryModal();
         this.categorySidebar = new CategorySidebar('categorySidebar');
         this.cartIcon = new CartIcon('cartIconContainer', this.cartService);
-        this.cart = new Cart(this.cartService);
+        this.cart = new Cart(this.cartService, this.checkoutService);
         this.productEditModal = new ProductEditModal();
         this.confirmModal = new ConfirmModal();
 

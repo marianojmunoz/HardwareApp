@@ -11,7 +11,10 @@ export class LoginModal {
     const modalHTML = `
       <div class="modal-overlay" id="loginModalBackdrop">
         <div class="modal-content">
-          <button class="modal-close" id="modalCloseBtn">&times;</button>
+          <div class="modal-brand" style="text-align: center; margin-bottom: 1rem;">
+            <h3 style="font-family: 'Outfit', sans-serif; color: var(--primary); margin: 0;">TechHardware</h3>
+          </div>
+          <button class="btn-close" id="modalCloseBtn">&times;</button>
           
           <!-- Login Form -->
           <div class="modal-section" id="loginSection">
