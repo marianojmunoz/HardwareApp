@@ -58,7 +58,8 @@ export class ExcelParser {
             precio_publico: parseFloat(getValue(excelRow, 'PUBLICO') || getValue(excelRow, 'publico') || 0),
             precio_total: parseFloat(getValue(excelRow, 'TOTAL') || getValue(excelRow, 'total') || 0),
             precio_gremio: parseFloat(getValue(excelRow, 'GREMIO') || getValue(excelRow, 'gremio') || 0),
-            stock: parseInt(getValue(excelRow, 'STOCK') || getValue(excelRow, 'stock') || 0)
+            stock: parseInt(getValue(excelRow, 'STOCK') || getValue(excelRow, 'stock') || 0),
+            image_url: getValue(excelRow, 'IMAGEN') || getValue(excelRow, 'imagen') || getValue(excelRow, 'IMAGE_URL') || getValue(excelRow, 'image_url') || getValue(excelRow, 'URL') || getValue(excelRow, 'url') || null
         };
 
         // Log what we extracted

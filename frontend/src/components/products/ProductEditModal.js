@@ -40,6 +40,11 @@ export class ProductEditModal {
                         <label class="form-label">Stock</label>
                         <input type="number" class="form-input" id="edit_stock" required>
                     </div>
+                    <div class="form-group">
+                        <label class="form-label">URL de Imagen</label>
+                        <input type="url" class="form-input" id="edit_image_url" placeholder="https://ejemplo.com/imagen.jpg">
+                        <small style="color: #666; font-size: 12px; display: block; margin-top: 4px;">Opcional - URL de la imagen del producto</small>
+                    </div>
                     <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
                         <button type="button" class="btn-secondary" id="editCancelBtn" style="flex: 1;">Cancelar</button>
                         <button type="submit" class="btn-primary" style="flex: 1;">Modificar</button>
@@ -90,10 +95,13 @@ export class ProductEditModal {
         document.getElementById('edit_sub_categoria').value = product.sub_categoria || '';
         document.getElementById('edit_precio_total').value = product.precio_total || '';
         document.getElementById('edit_stock').value = product.stock || '';
+        document.getElementById('edit_image_url').value = product.image_url || '';
     }
 
     handleSubmit() {
         if (!this.product) return;
+
+        const imageUrl = document.getElementById('edit_image_url').value.trim();
 
         const updatedProduct = {
             ...this.product,
@@ -103,6 +111,7 @@ export class ProductEditModal {
             sub_categoria: document.getElementById('edit_sub_categoria').value,
             precio_total: parseFloat(document.getElementById('edit_precio_total').value),
             stock: parseInt(document.getElementById('edit_stock').value),
+            image_url: imageUrl || null
         };
 
         if (this.onSave) {

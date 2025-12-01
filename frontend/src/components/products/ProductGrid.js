@@ -96,6 +96,8 @@ export class ProductGrid {
                 <option value="3" ${this.itemsPerPage === 3 ? 'selected' : ''}>3</option>
                 <option value="6" ${this.itemsPerPage === 6 ? 'selected' : ''}>6</option>
                 <option value="12" ${this.itemsPerPage === 12 ? 'selected' : ''}>12</option>
+                <option value="15" ${this.itemsPerPage === 15 ? 'selected' : ''}>15</option>
+                <option value="1000" ${this.itemsPerPage === 1000 ? 'selected' : ''}>Todos</option>
             </select>
         `;
 
