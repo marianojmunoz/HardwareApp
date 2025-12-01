@@ -53,6 +53,12 @@ class HardwareCatalogApp {
         // State
         this.currentUser = null;
         this.isAdmin = false;
+
+        // Allowed admin emails
+        this.ADMIN_EMAILS = [
+            'mariano.j.munoz.1985@gmail.com',
+            'mariano.j.munoz@hotmail.com'
+        ];
     }
 
     async init() {
@@ -97,7 +103,21 @@ class HardwareCatalogApp {
         this.adminButton.onClick(() => {
             this.loginModal.show();
             if (this.currentUser) {
-                this.loginModal.showUploadForm();
+                // If user is logged in but not admin, show login form (or maybe a message)
+                // For now, if they are admin, show upload. If regular user, show logout/profile info via login form
+                if (this.isAdmin) {
+                    this.loginModal.showUploadForm();
+                } else {
+                    // Regular user view (could be just logout button)
+                    this.loginModal.showUploadForm(); // Re-using upload form container for logout button for now
+                    // Hide upload specific elements for non-admins
+                    const uploadZone = document.getElementById('modalUploadZone');
+                    if (uploadZone) uploadZone.style.display = 'none';
+                    const title = document.querySelector('#uploadSection .modal-title');
+                    if (title) title.textContent = 'User Profile';
+                    const subtitle = document.querySelector('#uploadSection .modal-subtitle');
+                    if (subtitle) subtitle.textContent = `Logged in as ${this.currentUser.email}`;
+                }
             } else {
                 this.loginModal.showLoginForm();
             }
@@ -144,10 +164,14 @@ class HardwareCatalogApp {
             console.log('Auth state changed:', event);
             if (event === 'SIGNED_IN') {
                 this.currentUser = session.user;
-                this.isAdmin = true;
+                this.isAdmin = this.ADMIN_EMAILS.includes(session.user.email);
+
                 this.adminButton.showLoggedIn(session.user.email);
-                this.productGrid.setAdminMode(true);
-                this.loadProducts(); // Reload to show admin buttons
+
+                // Only enable admin mode if user is in allowed list
+                this.productGrid.setAdminMode(this.isAdmin);
+
+                this.loadProducts(); // Reload to show/hide admin buttons
             } else if (event === 'SIGNED_OUT') {
                 this.currentUser = null;
                 this.isAdmin = false;
@@ -163,9 +187,10 @@ class HardwareCatalogApp {
             const session = await authApi.getSession();
             if (session) {
                 this.currentUser = session.user;
-                this.isAdmin = true;
+                this.isAdmin = this.ADMIN_EMAILS.includes(session.user.email);
+
                 this.adminButton.showLoggedIn(session.user.email);
-                this.productGrid.setAdminMode(true);
+                this.productGrid.setAdminMode(this.isAdmin);
             }
         } catch (error) {
             console.error('Error checking auth state:', error);

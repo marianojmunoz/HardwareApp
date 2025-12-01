@@ -12,6 +12,31 @@ export const authApi = {
         return data;
     },
 
+    // Login con OAuth (Google)
+    async signInWithOAuth(provider) {
+        const { data, error } = await supabase.auth.signInWithOAuth({
+            provider: provider,
+            options: {
+                redirectTo: window.location.origin,
+                queryParams: {
+                    access_type: 'offline',
+                    prompt: 'consent',
+                },
+            }
+        });
+        handleSupabaseError(error);
+        return data;
+    },
+
+    // Recuperar contraseña
+    async resetPasswordForEmail(email) {
+        const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+            redirectTo: window.location.origin,
+        });
+        handleSupabaseError(error);
+        return data;
+    },
+
     // Logout
     async signOut() {
         const { error } = await supabase.auth.signOut();
