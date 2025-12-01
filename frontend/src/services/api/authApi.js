@@ -50,6 +50,15 @@ export const authApi = {
         return data;
     },
 
+    // Actualizar contraseña (después de recuperación)
+    async updatePassword(newPassword) {
+        const { data, error } = await supabase.auth.updateUser({
+            password: newPassword
+        });
+        handleSupabaseError(error);
+        return data;
+    },
+
     // Logout
     async signOut() {
         const { error } = await supabase.auth.signOut();

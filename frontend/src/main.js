@@ -167,6 +167,10 @@ class HardwareCatalogApp {
                 this.productGrid.setAdminMode(this.isAdmin);
 
                 this.loadProducts(); // Reload to show/hide admin buttons
+            } else if (event === 'PASSWORD_RECOVERY') {
+                // User clicked password reset link - redirect to reset page
+                console.log('Password recovery detected, redirecting to reset page');
+                window.location.href = './password-reset.html';
             } else if (event === 'SIGNED_OUT') {
                 this.currentUser = null;
                 this.isAdmin = false;
