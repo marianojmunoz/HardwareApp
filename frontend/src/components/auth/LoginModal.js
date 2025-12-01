@@ -1,10 +1,12 @@
 export class LoginModal {
   constructor(authManager, fileUploader) {
     this.authManager = authManager;
-    this.fileUploader = fileUploader; // Store fileUploader if needed for future logic
+    this.fileUploader = fileUploader;
     this.modal = null;
     this.onLoginCallback = null;
     this.onUploadCallback = null;
+    this.onLogoutCallback = null;
+    this.isVisible = false;
     this.createModal();
     this.setupEventListeners();
   }
@@ -77,14 +79,77 @@ export class LoginModal {
                 <span>or</span>
               </div>
 
-              <button type="button" class="btn-block btn-google" id="googleSignInBtn">
-                <svg class="google-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-                </svg>
-                Sign in with Google
+              <div class="social-buttons">
+                <button type="button" class="btn-block btn-google" id="googleSignInBtn">
+                  <svg class="google-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                  </svg>
+                  Sign in with Google
+                </button>
+                
+                <button type="button" class="btn-block btn-secondary-outline" id="showSignUpBtn">
+                  Create User
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Sign Up Form -->
+          <div class="modal-section" id="signUpSection" style="display: none;">
+            <h2 class="modal-title">Create Account</h2>
+            <p class="modal-subtitle">Sign up to get started.</p>
+            
+            <form id="signUpForm" class="login-form">
+              <div class="form-group">
+                <label for="signupEmail" class="form-label">Email</label>
+                <input 
+                  type="email" 
+                  id="signupEmail" 
+                  class="form-input" 
+                  placeholder="Enter your email"
+                  required
+                  autocomplete="email"
+                />
+              </div>
+              
+              <div class="form-group">
+                <label for="signupPassword" class="form-label">Password</label>
+                <div class="password-wrapper">
+                  <input 
+                    type="password" 
+                    id="signupPassword" 
+                    class="form-input" 
+                    placeholder="Create a password"
+                    required
+                    autocomplete="new-password"
+                  />
+                  <button type="button" class="password-toggle" id="toggleSignupPassword" aria-label="Toggle password visibility">
+                    <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                      <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="error-message" id="signupError"></div>
+              <div class="success-message" id="signupSuccess" style="display:none; color: green; text-align: center; margin-bottom: 1rem;">
+                Account created! Please check your email to confirm.
+              </div>
+              
+              <button type="submit" class="btn-block btn-primary">
+                Sign Up
+              </button>
+
+              <div class="divider">
+                <span>or</span>
+              </div>
+
+              <button type="button" class="btn-block btn-google" id="backToLoginFromSignupBtn" style="justify-content: center;">
+                Back to Login
               </button>
             </form>
           </div>
@@ -144,6 +209,18 @@ export class LoginModal {
               </button>
             </div>
           </div>
+
+          <!-- User Profile (Regular Users) -->
+          <div class="modal-section" id="userProfileSection" style="display: none;">
+            <h2 class="modal-title">User Profile</h2>
+            <p class="modal-subtitle" id="userProfileEmail">Logged in</p>
+            
+            <div class="modal-footer" style="margin-top: 2rem;">
+              <button type="button" class="btn-block btn-google" id="userLogoutBtn" style="justify-content: center;">
+                Sign Out
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     `;
@@ -158,28 +235,52 @@ export class LoginModal {
   setupEventListeners() {
     // Close Modal
     const closeBtn = document.getElementById('modalCloseBtn');
-    closeBtn.addEventListener('click', () => this.hide());
+    if (closeBtn) closeBtn.addEventListener('click', () => this.hide());
 
-    this.modal.addEventListener('click', (e) => {
-      if (e.target === this.modal) {
-        this.hide();
-      }
-    });
+    if (this.modal) {
+      this.modal.addEventListener('click', (e) => {
+        if (e.target === this.modal) {
+          this.hide();
+        }
+      });
+    }
 
     // Login Form Submit
     const loginForm = document.getElementById('loginForm');
-    loginForm.addEventListener('submit', (e) => this.handleLoginSubmit(e));
+    if (loginForm) loginForm.addEventListener('submit', (e) => this.handleLoginSubmit(e));
 
     // Password Toggle
     const togglePasswordBtn = document.getElementById('togglePassword');
     if (togglePasswordBtn) {
-      togglePasswordBtn.addEventListener('click', () => this.togglePasswordVisibility());
+      togglePasswordBtn.addEventListener('click', () => this.togglePasswordVisibility('password', 'togglePassword'));
+    }
+
+    const toggleSignupPasswordBtn = document.getElementById('toggleSignupPassword');
+    if (toggleSignupPasswordBtn) {
+      toggleSignupPasswordBtn.addEventListener('click', () => this.togglePasswordVisibility('signupPassword', 'toggleSignupPassword'));
     }
 
     // Google Sign In
     const googleBtn = document.getElementById('googleSignInBtn');
     if (googleBtn) {
       googleBtn.addEventListener('click', () => this.handleGoogleSignIn());
+    }
+
+    // Sign Up Navigation
+    const showSignUpBtn = document.getElementById('showSignUpBtn');
+    if (showSignUpBtn) {
+      showSignUpBtn.addEventListener('click', () => this.showSignUpForm());
+    }
+
+    const backToLoginFromSignupBtn = document.getElementById('backToLoginFromSignupBtn');
+    if (backToLoginFromSignupBtn) {
+      backToLoginFromSignupBtn.addEventListener('click', () => this.showLoginForm());
+    }
+
+    // Sign Up Form Submit
+    const signUpForm = document.getElementById('signUpForm');
+    if (signUpForm) {
+      signUpForm.addEventListener('submit', (e) => this.handleSignUpSubmit(e));
     }
 
     // Forgot Password
@@ -226,6 +327,11 @@ export class LoginModal {
       logoutBtn.addEventListener('click', () => this.handleLogout());
     }
 
+    const userLogoutBtn = document.getElementById('userLogoutBtn');
+    if (userLogoutBtn) {
+      userLogoutBtn.addEventListener('click', () => this.handleLogout());
+    }
+
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && this.isVisible) {
         this.hide();
@@ -235,18 +341,21 @@ export class LoginModal {
 
   async handleLoginSubmit(e) {
     e.preventDefault();
+    console.log('Login form submitted');
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    // Use the callback if provided, otherwise try to use authManager directly if available
     if (this.onLoginCallback) {
+      console.log('Calling onLoginCallback');
       this.onLoginCallback(email, password);
+    } else {
+      console.error('onLoginCallback is not set!');
     }
   }
 
-  togglePasswordVisibility() {
-    const passwordInput = document.getElementById('password');
-    const toggleBtn = document.getElementById('togglePassword');
+  togglePasswordVisibility(inputId = 'password', toggleId = 'togglePassword') {
+    const passwordInput = document.getElementById(inputId);
+    const toggleBtn = document.getElementById(toggleId);
 
     if (passwordInput.type === 'password') {
       passwordInput.type = 'text';
@@ -269,23 +378,31 @@ export class LoginModal {
 
   async handleGoogleSignIn() {
     try {
-      // Assuming authManager has a method exposed or we import authApi directly.
-      // Since we are inside a class that might not have direct access to authApi unless passed or imported.
-      // Ideally, we should delegate this to a callback or use the authManager.
-      // For now, let's assume we can use the authManager passed in constructor or import authApi.
-      // To keep it clean, let's dynamic import or assume authApi is available globally or passed.
-      // BUT, looking at app.js, LoginModal is initialized with authManager.
-
-      // Let's check if authManager has signInWithOAuth, if not we might need to add it there too.
-      // For this refactor, I'll assume we can add it to AuthManager or call authApi directly if I import it.
-      // Let's import authApi at the top of this file to be safe.
-
       const { authApi } = await import('../../services/api/authApi.js');
       await authApi.signInWithOAuth('google');
-
     } catch (error) {
       console.error('Google Sign In Error:', error);
       this.showError('loginError', error.message);
+    }
+  }
+
+  async handleSignUpSubmit(e) {
+    e.preventDefault();
+    const email = document.getElementById('signupEmail').value;
+    const password = document.getElementById('signupPassword').value;
+
+    try {
+      const { authApi } = await import('../../services/api/authApi.js');
+      await authApi.signUp(email, password);
+
+      document.getElementById('signupSuccess').style.display = 'block';
+      this.clearError('signupError');
+
+      document.getElementById('signUpForm').reset();
+
+    } catch (error) {
+      console.error('Sign Up Error:', error);
+      this.showError('signupError', error.message);
     }
   }
 
@@ -356,15 +473,22 @@ export class LoginModal {
     const recoveryForm = document.getElementById('recoveryForm');
     if (recoveryForm) recoveryForm.reset();
 
+    const signUpForm = document.getElementById('signUpForm');
+    if (signUpForm) signUpForm.reset();
+
     const fileInput = document.getElementById('modalFileInput');
     if (fileInput) fileInput.value = '';
 
     this.clearError('loginError');
     this.clearError('uploadError');
     this.clearError('recoveryError');
+    this.clearError('signupError');
 
     const recoverySuccess = document.getElementById('recoverySuccess');
     if (recoverySuccess) recoverySuccess.style.display = 'none';
+
+    const signupSuccess = document.getElementById('signupSuccess');
+    if (signupSuccess) signupSuccess.style.display = 'none';
 
     document.body.style.overflow = '';
 
@@ -376,6 +500,8 @@ export class LoginModal {
     document.getElementById('loginSection').style.display = 'block';
     document.getElementById('uploadSection').style.display = 'none';
     document.getElementById('recoverySection').style.display = 'none';
+    document.getElementById('signUpSection').style.display = 'none';
+    document.getElementById('userProfileSection').style.display = 'none';
     this.clearError('loginError');
   }
 
@@ -383,6 +509,8 @@ export class LoginModal {
     document.getElementById('loginSection').style.display = 'none';
     document.getElementById('uploadSection').style.display = 'block';
     document.getElementById('recoverySection').style.display = 'none';
+    document.getElementById('signUpSection').style.display = 'none';
+    document.getElementById('userProfileSection').style.display = 'none';
     this.clearError('uploadError');
   }
 
@@ -390,7 +518,29 @@ export class LoginModal {
     document.getElementById('loginSection').style.display = 'none';
     document.getElementById('uploadSection').style.display = 'none';
     document.getElementById('recoverySection').style.display = 'block';
+    document.getElementById('signUpSection').style.display = 'none';
+    document.getElementById('userProfileSection').style.display = 'none';
     this.clearError('recoveryError');
+  }
+
+  showSignUpForm() {
+    document.getElementById('loginSection').style.display = 'none';
+    document.getElementById('uploadSection').style.display = 'none';
+    document.getElementById('recoverySection').style.display = 'none';
+    document.getElementById('signUpSection').style.display = 'block';
+    document.getElementById('userProfileSection').style.display = 'none';
+    this.clearError('signupError');
+  }
+
+  showUserProfile(email) {
+    document.getElementById('loginSection').style.display = 'none';
+    document.getElementById('uploadSection').style.display = 'none';
+    document.getElementById('recoverySection').style.display = 'none';
+    document.getElementById('signUpSection').style.display = 'none';
+    document.getElementById('userProfileSection').style.display = 'block';
+
+    const emailEl = document.getElementById('userProfileEmail');
+    if (emailEl) emailEl.textContent = `Logged in as ${email}`;
   }
 
   showError(elementId, message) {

@@ -98,31 +98,6 @@ class HardwareCatalogApp {
             this.cartService.addProduct(product, quantity);
         });
 
-        // Admin button click
-        this.adminButton.setupEventListeners();
-        this.adminButton.onClick(() => {
-            this.loginModal.show();
-            if (this.currentUser) {
-                // If user is logged in but not admin, show login form (or maybe a message)
-                // For now, if they are admin, show upload. If regular user, show logout/profile info via login form
-                if (this.isAdmin) {
-                    this.loginModal.showUploadForm();
-                } else {
-                    // Regular user view (could be just logout button)
-                    this.loginModal.showUploadForm(); // Re-using upload form container for logout button for now
-                    // Hide upload specific elements for non-admins
-                    const uploadZone = document.getElementById('modalUploadZone');
-                    if (uploadZone) uploadZone.style.display = 'none';
-                    const title = document.querySelector('#uploadSection .modal-title');
-                    if (title) title.textContent = 'User Profile';
-                    const subtitle = document.querySelector('#uploadSection .modal-subtitle');
-                    if (subtitle) subtitle.textContent = `Logged in as ${this.currentUser.email}`;
-                }
-            } else {
-                this.loginModal.showLoginForm();
-            }
-        });
-
         // Login modal events
         this.loginModal.onLogin(async (email, password) => {
             await this.handleLogin(email, password);
@@ -149,6 +124,26 @@ class HardwareCatalogApp {
 
         this.productGrid.setDeleteCallback(async (product) => {
             await this.handleDeleteProduct(product);
+        });
+
+        // Admin button click
+        this.adminButton.setupEventListeners();
+        this.adminButton.onClick(() => {
+            if (this.currentUser) {
+                // User is logged in
+                if (this.isAdmin) {
+                    // Show upload form for admin
+                    this.loginModal.showUploadForm();
+                } else {
+                    // Show user profile for regular user
+                    this.loginModal.showUserProfile(this.currentUser.email);
+                }
+                this.loginModal.show();
+            } else {
+                // User is not logged in, show login form
+                this.loginModal.showLoginForm();
+                this.loginModal.show();
+            }
         });
 
         // Sort selector
@@ -201,7 +196,15 @@ class HardwareCatalogApp {
         try {
             const { user } = await authApi.signIn(email, password);
             console.log('Login successful:', user);
-            this.loginModal.showUploadForm();
+
+            // Check if user is admin
+            const isAdmin = this.ADMIN_EMAILS.includes(user.email);
+
+            if (isAdmin) {
+                this.loginModal.showUploadForm();
+            } else {
+                this.loginModal.showUserProfile(user.email);
+            }
         } catch (error) {
             console.error('Login error:', error);
             this.loginModal.showError('loginError', error.message);

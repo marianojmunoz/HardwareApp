@@ -12,6 +12,19 @@ export const authApi = {
         return data;
     },
 
+    // Registro de usuario
+    async signUp(email, password) {
+        const { data, error } = await supabase.auth.signUp({
+            email,
+            password,
+            options: {
+                emailRedirectTo: window.location.origin
+            }
+        });
+        handleSupabaseError(error);
+        return data;
+    },
+
     // Login con OAuth (Google)
     async signInWithOAuth(provider) {
         const { data, error } = await supabase.auth.signInWithOAuth({
