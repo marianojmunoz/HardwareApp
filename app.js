@@ -50,7 +50,6 @@ class HardwareCatalogApp {
 
     // File upload error
     this.fileUploader.onUploadError((error) => {
-      console.error('Upload error:', error);
       this.loginModal.displayError('uploadError', error);
     });
 

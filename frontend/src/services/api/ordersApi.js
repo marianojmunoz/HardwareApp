@@ -42,7 +42,6 @@ export const ordersApi = {
                 items: createdItems || []
             };
         } catch (error) {
-            console.error('Error creating order:', error);
             throw error;
         }
     },

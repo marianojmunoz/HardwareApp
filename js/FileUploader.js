@@ -46,7 +46,6 @@ export class FileUploader {
             }
 
         } catch (error) {
-            console.error('Error processing file:', error);
             if (this.errorCallback) {
                 this.errorCallback('Error al procesar el archivo. Verifica que sea un archivo Excel válido.');
             }

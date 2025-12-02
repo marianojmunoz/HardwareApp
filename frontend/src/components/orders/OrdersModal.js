@@ -70,7 +70,6 @@ export class OrdersModal {
             this.orders = await this.orderService.getAllOrders();
             this.renderOrders();
         } catch (error) {
-            console.error('Error loading orders:', error);
             body.innerHTML = `
                 <div class="orders-error">
                     <p>❌ Error al cargar pedidos</p>
@@ -151,7 +150,7 @@ export class OrdersModal {
     async handleStatusChange(orderId, newStatus) {
         try {
             await this.orderService.updateOrderStatus(orderId, newStatus);
-            console.log(`Order ${orderId} status updated to ${newStatus}`);
+
 
             // Update local order data
             const order = this.orders.find(o => o.id === orderId);
@@ -162,7 +161,7 @@ export class OrdersModal {
             // Re-render stats to update counts
             this.updateStats();
         } catch (error) {
-            console.error('Error updating order status:', error);
+
             throw error; // Re-throw to let OrderDetailsRow handle the error
         }
     }

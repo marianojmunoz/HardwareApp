@@ -1,5 +1,5 @@
 // API Services
-console.log('MAIN.JS LOADED - TOP LEVEL');
+
 import { authApi } from './services/api/authApi.js';
 
 // Infrastructure
@@ -68,7 +68,6 @@ class HardwareCatalogApp {
     }
 
     async init() {
-        console.log('Initializing Hardware Catalog App...');
 
         // Setup event listeners
         this.setupEventListeners();
@@ -174,7 +173,7 @@ class HardwareCatalogApp {
 
         // Auth state changes
         authApi.onAuthStateChange((event, session) => {
-            console.log('Auth state changed:', event);
+
             if (event === 'SIGNED_IN') {
                 this.currentUser = session.user;
                 this.isAdmin = this.ADMIN_EMAILS.includes(session.user.email);
@@ -193,7 +192,6 @@ class HardwareCatalogApp {
                 }
             } else if (event === 'PASSWORD_RECOVERY') {
                 // User clicked password reset link - redirect to reset page
-                console.log('Password recovery detected, redirecting to reset page');
                 window.location.href = './password-reset.html';
             } else if (event === 'SIGNED_OUT') {
                 this.currentUser = null;
@@ -218,14 +216,14 @@ class HardwareCatalogApp {
                 this.ordersButton.setAdminMode(this.isAdmin); // Show/hide orders button
             }
         } catch (error) {
-            console.error('Error checking auth state:', error);
+            this.loginModal.showError('authError', error.message);
         }
     }
 
     async handleLogin(email, password) {
         try {
             const { user } = await authApi.signIn(email, password);
-            console.log('Login successful:', user);
+
 
             // Check if user is admin
             const isAdmin = this.ADMIN_EMAILS.includes(user.email);
@@ -236,7 +234,7 @@ class HardwareCatalogApp {
                 this.loginModal.showUserProfile(user.email);
             }
         } catch (error) {
-            console.error('Login error:', error);
+
             this.loginModal.showError('loginError', error.message);
         }
     }
@@ -246,7 +244,7 @@ class HardwareCatalogApp {
             await authApi.signOut();
             this.loginModal.hide();
         } catch (error) {
-            console.error('Logout error:', error);
+            this.loginModal.showError('logoutError', error.message);
         }
     }
 
@@ -256,7 +254,6 @@ class HardwareCatalogApp {
             this.loginModal.clearError('uploadError');
 
             const products = await this.uploadService.uploadExcel(file);
-            console.log(`${products.length} productos cargados exitosamente`);
 
             // Generate and show upload summary
             const summary = this.uploadService.getUploadSummary(products);
@@ -271,7 +268,6 @@ class HardwareCatalogApp {
                 }, 300);
             }
         } catch (error) {
-            console.error('Upload error:', error);
             this.loginModal.showError('uploadError', error.message);
             this.productGrid.showEmptyState();
         }
@@ -283,7 +279,6 @@ class HardwareCatalogApp {
             this.productGrid.display(products);
             this.updatePageTitle(term);
         } catch (error) {
-            console.error('Search error:', error);
             this.productGrid.showEmptyState('Error al buscar productos');
         }
     }
@@ -309,17 +304,16 @@ class HardwareCatalogApp {
     }
 
     handleEditProduct(product) {
-        console.log('Edit product:', product);
         this.productEditModal.show(product);
 
         // Set the callback for when user saves
         this.productEditModal.setOnSave(async (updatedProduct) => {
             try {
                 await this.productService.updateProduct(updatedProduct.id, updatedProduct);
-                console.log('Product updated:', updatedProduct.id);
+
                 await this.loadProducts();
             } catch (error) {
-                console.error('Update error:', error);
+
                 alert(`Error al actualizar producto: ${error.message}`);
             }
         });
@@ -333,10 +327,10 @@ class HardwareCatalogApp {
             async () => {
                 try {
                     await this.productService.deleteProduct(product.id);
-                    console.log('Product deleted:', product.id);
+
                     await this.loadProducts();
                 } catch (error) {
-                    console.error('Delete error:', error);
+
                     alert(`Error al eliminar producto: ${error.message}`);
                 }
             }
@@ -345,25 +339,25 @@ class HardwareCatalogApp {
 
     async loadProducts() {
         try {
-            console.log('Starting loadProducts...');
+
             this.productGrid.showLoading();
 
-            console.log('Fetching products from service...');
+
             const products = await this.productService.getAllProducts();
-            console.log('Products fetched:', products ? products.length : 'null');
+
 
             if (products && products.length > 0) {
-                console.log('Displaying products in grid...');
+
                 this.productGrid.display(products);
-                console.log('Setting products in sidebar...');
+
                 this.categorySidebar.setProducts(products); // Populate sidebar
                 this.searchBar.show();
             } else {
-                console.log('No se encontraron productos.');
+
                 this.productGrid.showEmptyState();
             }
         } catch (error) {
-            console.error('Error al cargar productos:', error);
+
             this.productGrid.showEmptyState('Error al cargar productos');
         }
     }
@@ -375,19 +369,19 @@ class HardwareCatalogApp {
             const count = await this.orderService.getPendingCount();
             this.ordersButton.setPendingCount(count);
         } catch (error) {
-            console.error('Error updating pending orders count:', error);
+
         }
     }
 }
 
 // Initialize app when DOM is ready
 const initApp = () => {
-    console.log('Starting App Initialization...');
+
     try {
         const app = new HardwareCatalogApp();
         app.init();
     } catch (error) {
-        console.error('Error al inicializar la app:', error);
+
     }
 };
 

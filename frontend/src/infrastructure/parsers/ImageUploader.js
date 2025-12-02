@@ -51,12 +51,8 @@ export class ImageUploader {
             const { error } = await supabase.storage
                 .from(this.bucketName)
                 .remove([fileName]);
-
-            if (error) {
-                console.error('Error deleting image:', error);
-            }
         } catch (error) {
-            console.error('Error deleting image:', error);
+            throw error;
         }
     }
 

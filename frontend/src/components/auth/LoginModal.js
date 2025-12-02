@@ -341,15 +341,15 @@ export class LoginModal {
 
   async handleLoginSubmit(e) {
     e.preventDefault();
-    console.log('Login form submitted');
+
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
     if (this.onLoginCallback) {
-      console.log('Calling onLoginCallback');
+
       this.onLoginCallback(email, password);
     } else {
-      console.error('onLoginCallback is not set!');
+
     }
   }
 
@@ -381,7 +381,7 @@ export class LoginModal {
       const { authApi } = await import('../../services/api/authApi.js');
       await authApi.signInWithOAuth('google');
     } catch (error) {
-      console.error('Google Sign In Error:', error);
+
       this.showError('loginError', error.message);
     }
   }
@@ -401,7 +401,7 @@ export class LoginModal {
       document.getElementById('signUpForm').reset();
 
     } catch (error) {
-      console.error('Sign Up Error:', error);
+
       this.showError('signupError', error.message);
     }
   }
@@ -418,7 +418,7 @@ export class LoginModal {
       this.clearError('recoveryError');
 
     } catch (error) {
-      console.error('Recovery Error:', error);
+
       this.showError('recoveryError', error.message);
     }
   }

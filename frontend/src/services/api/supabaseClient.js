@@ -9,7 +9,6 @@ export const supabase = createClient(
 // Helper para manejar errores de Supabase
 export const handleSupabaseError = (error) => {
     if (error) {
-        console.error('Supabase error:', error);
         throw new Error(error.message || 'Error en la operación');
     }
 };

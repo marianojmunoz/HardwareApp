@@ -64,7 +64,7 @@ export class ProductGrid {
 
                 grid.appendChild(card.render());
             } catch (error) {
-                console.error('Error rendering product card:', product, error);
+                throw error;
             }
         });
 
@@ -75,12 +75,6 @@ export class ProductGrid {
 
     renderPagination() {
         const totalPages = Math.ceil(this.filteredProducts.length / this.itemsPerPage);
-        console.log('renderPagination called:', {
-            filteredProductsLength: this.filteredProducts.length,
-            itemsPerPage: this.itemsPerPage,
-            totalPages: totalPages,
-            currentPage: this.currentPage
-        });
 
         // Always show pagination, even with 1 page
         const paginationContainer = document.createElement('div');
@@ -126,7 +120,6 @@ export class ProductGrid {
         paginationContainer.appendChild(nextBtn);
 
         this.container.appendChild(paginationContainer);
-        console.log('Pagination controls appended to container');
 
         // Add event listener for items per page change
         const selectElement = document.getElementById('itemsPerPageSelect');

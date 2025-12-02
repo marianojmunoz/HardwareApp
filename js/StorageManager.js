@@ -18,7 +18,6 @@ export class StorageManager {
             localStorage.setItem(this.storageKey, jsonString);
             return true;
         } catch (error) {
-            console.error('Error saving to localStorage:', error);
             return false;
         }
     }
@@ -35,7 +34,6 @@ export class StorageManager {
             }
             return null;
         } catch (error) {
-            console.error('Error loading from localStorage:', error);
             return null;
         }
     }
@@ -49,7 +47,6 @@ export class StorageManager {
             localStorage.removeItem(this.storageKey);
             return true;
         } catch (error) {
-            console.error('Error clearing localStorage:', error);
             return false;
         }
     }

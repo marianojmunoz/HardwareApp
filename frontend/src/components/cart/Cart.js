@@ -74,7 +74,7 @@ export class Cart {
         // Clear cart button - show confirmation modal
         const clearBtn = modal.querySelector('#clearCartBtn');
         clearBtn?.addEventListener('click', () => {
-            console.log('[Cart] Clear button clicked! Showing confirmation...');
+
             this.confirmModal.classList.add('active');
         });
 
@@ -83,14 +83,14 @@ export class Cart {
         const confirmCancelBtn = confirmModal.querySelector('#confirmCancelBtn');
 
         confirmOkBtn?.addEventListener('click', () => {
-            console.log('[Cart] User confirmed, clearing cart...');
+
             this.confirmModal.classList.remove('active');
             this.cartService.clearCart();
             this.hide();
         });
 
         confirmCancelBtn?.addEventListener('click', () => {
-            console.log('[Cart] User cancelled');
+
             this.confirmModal.classList.remove('active');
         });
 

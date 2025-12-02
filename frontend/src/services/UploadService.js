@@ -37,15 +37,11 @@ export class UploadService {
             throw new Error('El archivo está vacío');
         }
 
-        // Delete all existing products first
-        console.log('Deleting all existing products...');
         await this.repository.deleteAll();
-        console.log('All products deleted.');
 
         const productsData = rawData
             .map(row => this.parser.mapToProduct(row))
             .filter(p => p.producto && p.producto.toString().trim() !== '');
-        console.log('Parsed products:', productsData.length);
 
         if (productsData.length === 0) {
             throw new Error('No se encontraron productos válidos en el archivo. Verifica que la columna PRODUCTO tenga datos.');
@@ -57,30 +53,17 @@ export class UploadService {
             codigo: this.generateUniqueCode(index)
         }));
 
-        console.log('Products with unique codes (sample):', productsWithUniqueCodes.slice(0, 3));
-
         // Validar que tengan los campos requeridos
         const invalidProducts = productsWithUniqueCodes.filter(p =>
             !p.codigo || !p.precio_publico || !p.precio_gremio || !p.precio_total
         );
 
         if (invalidProducts.length > 0) {
-            console.error('Invalid products:', invalidProducts);
             throw new Error(`Hay ${invalidProducts.length} productos con datos incompletos. Verifica que todas las filas tengan PUBLICO, GREMIO y TOTAL.`);
         }
 
-        // Log what we're about to send to database
-        console.log('About to insert to database. First product:', productsWithUniqueCodes[0]);
-        console.log('precio_total value:', productsWithUniqueCodes[0].precio_total);
-        console.log('Category info:', {
-            categoria: productsWithUniqueCodes[0].categoria,
-            sub_categoria: productsWithUniqueCodes[0].sub_categoria
-        });
-
         // Guardar en base de datos
         const products = await this.repository.createMany(productsWithUniqueCodes);
-
-        console.log('Saved products (first):', products[0]);
 
         return products;
     }

@@ -84,7 +84,7 @@ export class CartService {
         try {
             localStorage.setItem(this.storageKey, JSON.stringify(this.cart));
         } catch (error) {
-            console.error('Error saving cart to localStorage:', error);
+            throw error;
         }
     }
 
@@ -94,8 +94,7 @@ export class CartService {
             const stored = localStorage.getItem(this.storageKey);
             return stored ? JSON.parse(stored) : [];
         } catch (error) {
-            console.error('Error loading cart from localStorage:', error);
-            return [];
+            throw error;
         }
     }
 }

@@ -31,8 +31,6 @@ export class OrderService {
             items: cartItems,
             totalAmount
         });
-
-        console.log('Order created successfully:', result.order.id);
         return result;
     }
 

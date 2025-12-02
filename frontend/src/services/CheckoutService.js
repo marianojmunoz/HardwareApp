@@ -19,14 +19,11 @@ export class CheckoutService {
                     const session = await authApi.getSession();
                     if (session && session.user) {
                         await this.orderService.createOrder(session.user.email, cartItems);
-                        console.log('Order saved to database successfully');
                     } else {
-                        console.warn('User not authenticated - order will not be saved to database');
+                        throw new Error('User not authenticated - order will not be saved to database');
                     }
                 } catch (dbError) {
-                    console.error('Error saving order to database:', dbError);
-                    // Continue with checkout even if database save fails
-                    // User can still complete order via WhatsApp
+                    throw dbError;
                 }
             }
 
@@ -50,7 +47,6 @@ export class CheckoutService {
 
             return true;
         } catch (error) {
-            console.error('Checkout error:', error);
             throw new Error('Error al procesar el pedido: ' + error.message);
         }
     }

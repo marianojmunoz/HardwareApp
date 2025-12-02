@@ -9,8 +9,6 @@ export class ExcelParser {
                     const workbook = XLSX.read(data, { type: 'array' });
                     const sheet = workbook.Sheets[workbook.SheetNames[0]];
                     const jsonData = XLSX.utils.sheet_to_json(sheet);
-                    console.log('Excel Data Sample (First Row):', jsonData[0]);
-                    console.log('Available Columns:', Object.keys(jsonData[0] || {}));
                     resolve(jsonData);
                 } catch (error) {
                     reject(new Error('Error parsing Excel file'));
@@ -45,10 +43,6 @@ export class ExcelParser {
             return value;
         };
 
-        // Log the raw Excel row to see what columns we have
-        console.log('Raw Excel Row:', excelRow);
-        console.log('Available Excel Columns:', Object.keys(excelRow));
-
         const mappedProduct = {
             codigo: getValue(excelRow, 'CODIGO') || getValue(excelRow, 'codigo') || '',
             producto: getValue(excelRow, 'PRODUCTO') || getValue(excelRow, 'producto') || '',
@@ -61,10 +55,6 @@ export class ExcelParser {
             stock: parseInt(getValue(excelRow, 'STOCK') || getValue(excelRow, 'stock') || 0),
             image_url: getValue(excelRow, 'IMAGEN') || getValue(excelRow, 'imagen') || getValue(excelRow, 'IMAGE_URL') || getValue(excelRow, 'image_url') || getValue(excelRow, 'URL') || getValue(excelRow, 'url') || null
         };
-
-        // Log what we extracted
-        console.log('Mapped Product:', mappedProduct);
-        console.log('Total Value Extracted:', getValue(excelRow, 'TOTAL'), 'or', getValue(excelRow, 'total'));
 
         return mappedProduct;
     }

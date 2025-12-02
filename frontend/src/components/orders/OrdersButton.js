@@ -2,7 +2,6 @@ export class OrdersButton {
     constructor(containerId, isAdmin = false) {
         this.container = document.getElementById(containerId);
         if (!this.container) {
-            console.warn(`Container with id "${containerId}" not found`);
             return;
         }
 

@@ -1,10 +1,11 @@
 import { formatPrice } from '../../utils/formatters.js';
 
 export class OrderDetailsRow {
-    constructor(order, index, onStatusChange) {
+    constructor(order, index, onStatusChange, isAdmin = false) {
         this.order = order;
         this.index = index;
         this.onStatusChange = onStatusChange;
+        this.isAdmin = isAdmin;
         this.isExpanded = false;
     }
 
@@ -30,6 +31,18 @@ export class OrderDetailsRow {
         // Status badge
         const statusBadge = this.getStatusBadge(this.order.status);
 
+        // Status control (dropdown for admin, badge only for user)
+        let statusControl = '';
+        if (this.isAdmin) {
+            statusControl = `
+                <select class="status-select" data-order-id="${this.order.id}">
+                    <option value="pending" ${this.order.status === 'pending' ? 'selected' : ''}>Pendiente</option>
+                    <option value="accepted" ${this.order.status === 'accepted' ? 'selected' : ''}>Aceptado</option>
+                    <option value="rejected" ${this.order.status === 'rejected' ? 'selected' : ''}>Rechazado</option>
+                </select>
+            `;
+        }
+
         row.innerHTML = `
             <div class="order-row-main">
                 <div class="order-cell order-number">#${this.index}</div>
@@ -44,11 +57,7 @@ export class OrderDetailsRow {
                 <div class="order-cell order-total">${formatPrice(this.order.total_amount)}</div>
                 <div class="order-cell order-status">
                     ${statusBadge}
-                    <select class="status-select" data-order-id="${this.order.id}">
-                        <option value="pending" ${this.order.status === 'pending' ? 'selected' : ''}>Pendiente</option>
-                        <option value="accepted" ${this.order.status === 'accepted' ? 'selected' : ''}>Aceptado</option>
-                        <option value="rejected" ${this.order.status === 'rejected' ? 'selected' : ''}>Rechazado</option>
-                    </select>
+                    ${statusControl}
                 </div>
             </div>
             <div class="order-row-details" style="display: none;">
@@ -75,7 +84,7 @@ export class OrderDetailsRow {
                 <span class="item-price">${formatPrice(item.unit_price)}</span>
                 <span class="item-subtotal">${formatPrice(item.subtotal)}</span>
             </div>
-        `).join('');
+            `).join('');
 
         return `
             <div class="order-items-header">
@@ -136,7 +145,6 @@ export class OrderDetailsRow {
                             badge.outerHTML = this.getStatusBadge(newStatus);
                         }
                     } catch (error) {
-                        console.error('Error updating status:', error);
                         // Revert select
                         e.target.value = this.order.status;
                         alert('Error al actualizar el estado del pedido');
