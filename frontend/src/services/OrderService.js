@@ -71,9 +71,10 @@ export class OrderService {
 
     /**
      * Get count of pending orders
+     * @param {string} userEmail - Optional email to filter by
      * @returns {Promise<number>} Count of pending orders
      */
-    async getPendingCount() {
-        return await ordersApi.getPendingOrdersCount();
+    async getPendingCount(userEmail = null) {
+        return await ordersApi.getPendingOrdersCount(userEmail);
     }
 }

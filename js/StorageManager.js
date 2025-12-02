@@ -3,7 +3,7 @@
  * Handles localStorage operations for product data persistence
  */
 export class StorageManager {
-    constructor(storageKey = 'hardwareProducts') {
+    constructor(storageKey) {
         this.storageKey = storageKey;
     }
 

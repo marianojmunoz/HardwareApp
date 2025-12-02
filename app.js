@@ -5,6 +5,7 @@ import { ProductDisplay } from './js/ProductDisplay.js';
 import { SearchFilter } from './js/SearchFilter.js';
 import { FileUploader } from './js/FileUploader.js';
 import { LoginModal } from './js/LoginModal.js';
+import { CartManager } from './js/CartManager.js';
 
 /**
  * HardwareCatalogApp
@@ -19,8 +20,8 @@ class HardwareCatalogApp {
     this.productDisplay = new ProductDisplay('productsContainer');
     this.searchFilter = new SearchFilter('searchBox', 'filterSelect', 'controls');
     this.fileUploader = new FileUploader(this.authManager);
-    this.loginModal = new LoginModal(this.authManager, this.fileUploader);
-
+    this.cartManager = new CartManager(this.authManager);
+    this.loginModal = new LoginModal(this.authManager, this.fileUploader, this.cartManager);
     this.currentSearchTerm = '';
     this.currentCategory = '';
   }

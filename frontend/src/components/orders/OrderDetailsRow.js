@@ -46,7 +46,7 @@ export class OrderDetailsRow {
         row.innerHTML = `
             <div class="order-row-main">
                 <div class="order-cell order-number">#${this.index}</div>
-                <div class="order-cell order-email">${this.order.user_email}</div>
+                ${this.isAdmin ? `<div class="order-cell order-email">${this.order.user_email}</div>` : ''}
                 <div class="order-cell order-date">${formattedDate}</div>
                 <div class="order-cell order-products">
                     <button class="expand-btn" data-order-id="${this.order.id}">

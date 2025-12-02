@@ -6,32 +6,33 @@ export class OrdersButton {
         }
 
         this.isAdmin = isAdmin;
+        this.isLoggedIn = false;
         this.onOrdersClick = null;
         this.pendingCount = 0;
-
-        if (this.isAdmin) {
-            this.render();
-            this.setupListeners();
-        }
     }
 
     render() {
-        if (!this.isAdmin) {
+        if (!this.isLoggedIn) {
             this.container.innerHTML = '';
             return;
         }
 
+        // Show badge if there are pending orders
+        const badgeHtml = this.pendingCount > 0
+            ? `<span class="orders-badge">${this.pendingCount}</span>`
+            : '';
+
+        const title = this.isAdmin ? 'Ver todos los pedidos' : 'Ver mis pedidos';
+
         this.container.innerHTML = `
             <div class="orders-icon-wrapper">
-                <button class="orders-icon-btn" id="ordersIconBtn" title="Ver pedidos pendientes">
+                <button class="orders-icon-btn" id="ordersIconBtn" title="${title}">
                     📋
-                    ${this.pendingCount > 0 ? `<span class="orders-badge">${this.pendingCount}</span>` : ''}
+                    ${badgeHtml}
                 </button>
             </div>
         `;
-    }
 
-    setupListeners() {
         this.attachClickHandler();
     }
 
@@ -47,20 +48,17 @@ export class OrdersButton {
         this.attachClickHandler();
     }
 
-    // Update the pending orders count
+    // Update the pending orders count (admin only)
     setPendingCount(count) {
         this.pendingCount = count;
         this.render();
-        this.attachClickHandler(); // Re-attach after re-render
     }
 
-    // Update visibility based on admin status
-    setAdminMode(isAdmin) {
+    // Update visibility based on login and admin status
+    setUserStatus(isLoggedIn, isAdmin = false) {
+        this.isLoggedIn = isLoggedIn;
         this.isAdmin = isAdmin;
         this.render();
-        if (isAdmin) {
-            this.setupListeners();
-        }
     }
 
     show() {

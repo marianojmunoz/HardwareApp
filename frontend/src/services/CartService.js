@@ -1,8 +1,37 @@
 export class CartService {
-    constructor() {
-        this.storageKey = 'hardware_cart';
+    constructor(userEmail = null) {
+        this.userEmail = userEmail;
+        this.storageKey = this.generateStorageKey(userEmail);
         this.cart = this.loadFromStorage();
         this.listeners = [];
+    }
+
+    // Generate unique storage key based on user email
+    generateStorageKey(email) {
+        if (email) {
+            return `hardware_cart_${email}`;
+        }
+        return 'hardware_cart'; // Fallback for non-logged in users
+    }
+
+    // Set user email and reload cart from their specific storage
+    setUser(userEmail) {
+        console.log(`CartService: Switching user to ${userEmail}`);
+        this.userEmail = userEmail;
+        this.storageKey = this.generateStorageKey(userEmail);
+        console.log(`CartService: New storage key is ${this.storageKey}`);
+        this.cart = this.loadFromStorage();
+        console.log(`CartService: Loaded ${this.cart.length} items for ${userEmail}`);
+        this.notifyListeners();
+    }
+
+    // Clear user and reset to default cart
+    clearUser() {
+        this.userEmail = null;
+        this.storageKey = 'hardware_cart';
+        this.cart = [];
+        this.saveToStorage();
+        this.notifyListeners();
     }
 
     // Get all cart items
@@ -22,6 +51,14 @@ export class CartService {
 
     // Add product to cart
     addProduct(product, quantity = 1) {
+        // Check if user is logged in
+        if (!this.userEmail) {
+            return {
+                success: false,
+                message: 'Por favor, inicia sesión para agregar productos al carrito'
+            };
+        }
+
         const existingItem = this.cart.find(item => item.product.id === product.id);
 
         if (existingItem) {
@@ -35,6 +72,11 @@ export class CartService {
 
         this.saveToStorage();
         this.notifyListeners();
+
+        return {
+            success: true,
+            message: 'Producto agregado al carrito'
+        };
     }
 
     // Update item quantity

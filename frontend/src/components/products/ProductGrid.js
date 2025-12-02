@@ -59,7 +59,7 @@ export class ProductGrid {
                 });
 
                 card.setAddToCartCallback((p, quantity) => {
-                    if (this.onAddToCart) this.onAddToCart(p, quantity);
+                    if (this.onAddToCart) return this.onAddToCart(p, quantity);
                 });
 
                 grid.appendChild(card.render());

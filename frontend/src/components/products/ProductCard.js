@@ -89,21 +89,36 @@ export class ProductCard {
       addToCartBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         const quantity = parseInt(quantityInput?.value || 1);
-        this.onAddToCart(this.product, quantity);
+        const result = this.onAddToCart(this.product, quantity);
 
-        // Visual feedback
+        console.log('Add to cart result:', result); // Debug log
+
+        // Visual feedback based on result
         const originalText = addToCartBtn.textContent;
-        addToCartBtn.textContent = '¡Agregado!';
-        addToCartBtn.classList.add('btn-success');
 
-        setTimeout(() => {
-          addToCartBtn.textContent = originalText;
-          addToCartBtn.classList.remove('btn-success');
-        }, 2000);
+        if (result && result.success) {
+          // Success - product added
+          addToCartBtn.textContent = '¡Agregado!';
+          addToCartBtn.classList.add('btn-success');
 
-        // Reset quantity to 1 after adding
-        if (quantityInput) {
-          quantityInput.value = 1;
+          setTimeout(() => {
+            addToCartBtn.textContent = originalText;
+            addToCartBtn.classList.remove('btn-success');
+          }, 2000);
+
+          // Reset quantity to 1 after adding
+          if (quantityInput) {
+            quantityInput.value = 1;
+          }
+        } else {
+          // Failed - show error (not logged in)
+          addToCartBtn.textContent = '⚠️ Inicia sesión';
+          addToCartBtn.classList.add('btn-warning');
+
+          setTimeout(() => {
+            addToCartBtn.textContent = originalText;
+            addToCartBtn.classList.remove('btn-warning');
+          }, 3000);
         }
       });
     }

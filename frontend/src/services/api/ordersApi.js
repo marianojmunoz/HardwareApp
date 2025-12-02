@@ -107,11 +107,17 @@ export const ordersApi = {
     },
 
     // Obtener cuenta de pedidos pendientes (para badge)
-    async getPendingOrdersCount() {
-        const { count, error } = await supabase
+    async getPendingOrdersCount(userEmail = null) {
+        let query = supabase
             .from('orders')
             .select('*', { count: 'exact', head: true })
             .eq('status', 'pending');
+
+        if (userEmail) {
+            query = query.eq('user_email', userEmail);
+        }
+
+        const { count, error } = await query;
 
         handleSupabaseError(error);
         return count || 0;

@@ -3,9 +3,10 @@
  * Manages the login modal UI and file upload interface
  */
 export class LoginModal {
-    constructor(authManager, fileUploader) {
+    constructor(authManager, fileUploader, cartManager) {
         this.authManager = authManager;
         this.fileUploader = fileUploader;
+        this.cartManager = cartManager; // Add cartManager to constructor
         this.modal = null;
         this.isVisible = false;
 
@@ -156,6 +157,7 @@ export class LoginModal {
         if (success) {
             this.clearError('loginError');
             this.showUploadForm();
+            this.cartManager.handleLogin(); // Notify CartManager on successful login
         } else {
             this.displayError('loginError', 'Usuario o contraseña incorrectos');
         }
@@ -225,6 +227,7 @@ export class LoginModal {
     handleLogout() {
         this.authManager.logout();
         this.showLoginForm();
+        this.cartManager.handleLogin(); // Notify CartManager on logout
     }
 
     /**

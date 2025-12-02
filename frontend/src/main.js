@@ -54,7 +54,7 @@ class HardwareCatalogApp {
         this.productEditModal = new ProductEditModal();
         this.confirmModal = new ConfirmModal();
         this.ordersButton = new OrdersButton('ordersButtonContainer', false); // Initially false
-        this.ordersModal = new OrdersModal(this.orderService);
+        this.ordersModal = new OrdersModal(this.orderService, false);
 
         // State
         this.currentUser = null;
@@ -105,7 +105,7 @@ class HardwareCatalogApp {
         });
 
         this.productGrid.setAddToCartCallback((product, quantity) => {
-            this.cartService.addProduct(product, quantity);
+            return this.cartService.addProduct(product, quantity);
         });
 
         // Login modal events
@@ -156,9 +156,11 @@ class HardwareCatalogApp {
             }
         });
 
-        // Orders button click (admin only)
+        // Orders button click
         this.ordersButton.onClick(async () => {
-            await this.ordersModal.show();
+            const userEmail = this.currentUser ? this.currentUser.email : null;
+            await this.ordersModal.show(userEmail);
+
             // Update count after modal closes
             await this.updatePendingOrdersCount();
         });
@@ -179,26 +181,33 @@ class HardwareCatalogApp {
                 this.isAdmin = this.ADMIN_EMAILS.includes(session.user.email);
 
                 this.adminButton.showLoggedIn(session.user.email);
-
+                this.cartService.setUser(session.user.email);
                 // Only enable admin mode if user is in allowed list
                 this.productGrid.setAdminMode(this.isAdmin);
-                this.ordersButton.setAdminMode(this.isAdmin); // Show/hide orders button
+                this.ordersModal = new OrdersModal(this.orderService, this.isAdmin);
+                this.ordersButton.setUserStatus(true, this.isAdmin); // Show for all logged-in users
 
                 this.loadProducts(); // Reload to show/hide admin buttons
 
-                // Update pending orders count for admin
-                if (this.isAdmin) {
-                    this.updatePendingOrdersCount();
-                }
+                this.loadProducts(); // Reload to show/hide admin buttons
+
+                // Update pending orders count for all users
+                this.updatePendingOrdersCount();
             } else if (event === 'PASSWORD_RECOVERY') {
                 // User clicked password reset link - redirect to reset page
                 window.location.href = './password-reset.html';
             } else if (event === 'SIGNED_OUT') {
                 this.currentUser = null;
+
+                this.cartService.clearUser();
+                if (this.cart && this.cart.isOpen) {
+                    this.cart.hide();
+                }
+                this.ordersModal = new OrdersModal(this.orderService, false);
                 this.isAdmin = false;
                 this.adminButton.showLoggedOut();
                 this.productGrid.setAdminMode(false);
-                this.ordersButton.setAdminMode(false); // Hide orders button
+                this.ordersButton.setUserStatus(false, false); // Hide orders button
                 this.loadProducts(); // Reload to hide admin buttons
             }
         });
@@ -212,8 +221,9 @@ class HardwareCatalogApp {
                 this.isAdmin = this.ADMIN_EMAILS.includes(session.user.email);
 
                 this.adminButton.showLoggedIn(session.user.email);
+                this.cartService.setUser(session.user.email);
                 this.productGrid.setAdminMode(this.isAdmin);
-                this.ordersButton.setAdminMode(this.isAdmin); // Show/hide orders button
+                this.ordersButton.setUserStatus(true, this.isAdmin);// Show/hide orders button
             }
         } catch (error) {
             this.loginModal.showError('authError', error.message);
@@ -363,13 +373,16 @@ class HardwareCatalogApp {
     }
 
     async updatePendingOrdersCount() {
-        if (!this.isAdmin) return;
+        // If not logged in, don't update
+        if (!this.currentUser) return;
 
         try {
-            const count = await this.orderService.getPendingCount();
+            // If admin, get all pending. If user, get only theirs.
+            const email = this.isAdmin ? null : this.currentUser.email;
+            const count = await this.orderService.getPendingCount(email);
             this.ordersButton.setPendingCount(count);
         } catch (error) {
-
+            console.error('Error updating pending count:', error);
         }
     }
 }
