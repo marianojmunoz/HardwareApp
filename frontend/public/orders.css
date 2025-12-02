@@ -1,0 +1,514 @@
+/* ========================================
+   ORDERS TRACKING SYSTEM STYLES
+   ======================================== */
+
+/* Orders Button (Admin Only) */
+.orders-icon-wrapper {
+    position: relative;
+}
+
+.orders-icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    box-shadow: 0 2px 8px var(--glass-shadow);
+}
+
+.orders-icon-btn:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+/* Orders Modal */
+.orders-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-base);
+}
+
+.orders-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.orders-modal-content {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    width: 95%;
+    max-width: 1200px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    transform: scale(0.9);
+    transition: transform var(--transition-base);
+}
+
+.orders-modal-overlay.active .orders-modal-content {
+    transform: scale(1);
+}
+
+.orders-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-lg);
+    border-bottom: 2px solid var(--border-color);
+}
+
+.orders-modal-header h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.orders-close-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-tertiary);
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.orders-close-btn:hover {
+    background: var(--error);
+    color: white;
+    transform: rotate(90deg);
+}
+
+.orders-modal-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--spacing-lg);
+}
+
+/* Orders Loading/Empty/Error States */
+.orders-loading,
+.orders-empty-state,
+.orders-error {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-tertiary);
+}
+
+.orders-loading .spinner {
+    margin: 0 auto 1rem;
+}
+
+.orders-empty-state .empty-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.orders-error {
+    color: var(--error);
+}
+
+.orders-error small {
+    display: block;
+    margin-top: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Orders Statistics */
+.orders-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.stat-item {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 2px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    text-align: center;
+    transition: all var(--transition-base);
+}
+
+.stat-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px var(--glass-shadow);
+    border-color: var(--primary);
+}
+
+.stat-item .stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.stat-item .stat-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Orders Table Container */
+.orders-table-container {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+}
+
+.orders-table {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.orders-table-header {
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 1.5fr 1.5fr 1fr 1.5fr;
+    gap: var(--spacing-sm);
+    background: var(--bg-tertiary);
+    padding: var(--spacing-md);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+    border-bottom: 2px solid var(--border-color);
+}
+
+.orders-table-body {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+/* Order Row */
+.order-row {
+    border-bottom: 1px solid var(--border-color);
+    transition: all var(--transition-base);
+}
+
+.order-row:hover {
+    background: var(--bg-tertiary);
+}
+
+.order-row.expanded {
+    background: var(--bg-tertiary);
+}
+
+.order-row-main {
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 1.5fr 1.5fr 1fr 1.5fr;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    align-items: center;
+}
+
+.order-cell {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+.order-number {
+    font-weight: 700;
+    color: var(--text-tertiary);
+}
+
+.order-email {
+    font-weight: 500;
+    color: var(--primary);
+}
+
+.order-date {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+.order-total {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--accent);
+}
+
+.order-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Expand Button */
+.expand-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    border: none;
+    color: var(--primary);
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-base);
+}
+
+.expand-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.expand-icon {
+    font-size: 0.75rem;
+    transition: transform var(--transition-base);
+}
+
+/* Status Badge */
+.status-badge {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: var(--radius-lg);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-pending {
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--warning);
+    border: 2px solid var(--warning);
+}
+
+.status-accepted {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--success);
+    border: 2px solid var(--success);
+}
+
+.status-rejected {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--error);
+    border: 2px solid var(--error);
+}
+
+/* Status Select */
+.status-select {
+    padding: 0.5rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.status-select:hover {
+    border-color: var(--primary);
+}
+
+.status-select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Order Details Row */
+.order-row-details {
+    padding: var(--spacing-lg);
+    background: var(--bg-secondary);
+    border-top: 2px dashed var(--border-color);
+}
+
+.order-items-header {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.order-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.order-item {
+    display: grid;
+    grid-template-columns: auto 3fr 1fr 1fr 1fr;
+    gap: var(--spacing-sm);
+    align-items: center;
+    padding: var(--spacing-sm);
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-base);
+}
+
+.order-item:hover {
+    background: var(--glass-bg);
+    transform: translateX(4px);
+}
+
+.item-number {
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    font-weight: 700;
+}
+
+.item-name {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.item-quantity {
+    text-align: center;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.item-price,
+.item-subtotal {
+    text-align: right;
+    font-weight: 600;
+}
+
+.item-subtotal {
+    color: var(--accent);
+}
+
+.no-items {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-tertiary);
+    font-style: italic;
+}
+
+/* Responsive Orders Table */
+@media (max-width: 1024px) {
+
+    .orders-table-header,
+    .order-row-main {
+        grid-template-columns: 0.5fr 1.5fr 1fr 1fr 0.8fr 1.2fr;
+        font-size: 0.8rem;
+    }
+
+    .order-items-header,
+    .order-item {
+        grid-template-columns: 2fr 0.8fr 0.8fr 1fr;
+    }
+
+    .item-number {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .orders-stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .orders-table-header {
+        display: none;
+    }
+
+    .order-row-main {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .order-cell {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .order-cell:before {
+        content: attr(data-label);
+        font-weight: 700;
+        color: var(--text-secondary);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+    }
+
+    .order-items-header {
+        display: none;
+    }
+
+    .order-item {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+    }
+}
+
+/* Orders Badge - Pending Count */
+.orders-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--error);
+    color: white;
+    border: 2px solid var(--bg-secondary);
+    border-radius: 50%;
+    min-width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0 4px;
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
+    animation: badge-pop 0.3s ease;
+}
+
+@keyframes badge-pop {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}

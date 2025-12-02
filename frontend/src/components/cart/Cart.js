@@ -31,7 +31,7 @@ export class Cart {
                     </div>
                     <div class="cart-actions">
                         <button class="btn-secondary" id="clearCartBtn">Vaciar Carrito</button>
-                        <button class="btn-primary" id="checkoutBtn">Finalizar Compra</button>
+                        <button class="btn-primary" id="checkoutBtn">Confirmar Pedido</button>
                     </div>
                 </div>
             </div>

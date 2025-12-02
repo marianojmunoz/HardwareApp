@@ -1,8 +1,10 @@
 import { formatPrice } from '../utils/formatters.js';
+import { authApi } from './api/authApi.js';
 
 export class CheckoutService {
-    constructor() {
+    constructor(orderService = null) {
         this.whatsappNumber = '5493434803193'; // From index.html contact info
+        this.orderService = orderService; // Will be injected from main.js
     }
 
     async processCheckout(cartItems) {
@@ -11,10 +13,27 @@ export class CheckoutService {
         }
 
         try {
-            // 1. Generate Excel File
+            // 1. Save order to database if user is authenticated and orderService is available
+            if (this.orderService) {
+                try {
+                    const session = await authApi.getSession();
+                    if (session && session.user) {
+                        await this.orderService.createOrder(session.user.email, cartItems);
+                        console.log('Order saved to database successfully');
+                    } else {
+                        console.warn('User not authenticated - order will not be saved to database');
+                    }
+                } catch (dbError) {
+                    console.error('Error saving order to database:', dbError);
+                    // Continue with checkout even if database save fails
+                    // User can still complete order via WhatsApp
+                }
+            }
+
+            // 2. Generate Excel File
             this.generateExcelOrder(cartItems);
 
-            // 2. Notify user about manual attachment
+            // 3. Notify user about manual attachment
             // Using a small timeout to let the download start visually
             await new Promise(resolve => setTimeout(resolve, 500));
 

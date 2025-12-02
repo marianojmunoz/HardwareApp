@@ -12,6 +12,7 @@ import { ProductService } from './services/ProductService.js';
 import { UploadService } from './services/UploadService.js';
 import { CheckoutService } from './services/CheckoutService.js';
 import { CartService } from './services/CartService.js';
+import { OrderService } from './services/OrderService.js';
 
 // Components
 import { ProductGrid } from './components/products/ProductGrid.js';
@@ -24,6 +25,8 @@ import { CartIcon } from './components/cart/CartIcon.js';
 import { Cart } from './components/cart/Cart.js';
 import { ProductEditModal } from './components/products/ProductEditModal.js';
 import { ConfirmModal } from './components/common/ConfirmModal.js';
+import { OrdersButton } from './components/orders/OrdersButton.js';
+import { OrdersModal } from './components/orders/OrdersModal.js';
 
 class HardwareCatalogApp {
     constructor() {
@@ -36,7 +39,8 @@ class HardwareCatalogApp {
         this.productService = new ProductService(this.productRepo);
         this.uploadService = new UploadService(this.excelParser, this.productRepo);
         this.cartService = new CartService();
-        this.checkoutService = new CheckoutService();
+        this.orderService = new OrderService();
+        this.checkoutService = new CheckoutService(this.orderService); // Inject OrderService
 
         // Initialize components
         this.productGrid = new ProductGrid('productsContainer');
@@ -49,6 +53,8 @@ class HardwareCatalogApp {
         this.cart = new Cart(this.cartService, this.checkoutService);
         this.productEditModal = new ProductEditModal();
         this.confirmModal = new ConfirmModal();
+        this.ordersButton = new OrdersButton('ordersButtonContainer', false); // Initially false
+        this.ordersModal = new OrdersModal(this.orderService);
 
         // State
         this.currentUser = null;
@@ -72,6 +78,11 @@ class HardwareCatalogApp {
 
         // Load initial products
         await this.loadProducts();
+
+        // Update pending orders count if admin
+        if (this.isAdmin) {
+            await this.updatePendingOrdersCount();
+        }
     }
 
     setupEventListeners() {
@@ -146,6 +157,13 @@ class HardwareCatalogApp {
             }
         });
 
+        // Orders button click (admin only)
+        this.ordersButton.onClick(async () => {
+            await this.ordersModal.show();
+            // Update count after modal closes
+            await this.updatePendingOrdersCount();
+        });
+
         // Sort selector
         const sortSelect = document.getElementById('sortSelect');
         if (sortSelect) {
@@ -165,8 +183,14 @@ class HardwareCatalogApp {
 
                 // Only enable admin mode if user is in allowed list
                 this.productGrid.setAdminMode(this.isAdmin);
+                this.ordersButton.setAdminMode(this.isAdmin); // Show/hide orders button
 
                 this.loadProducts(); // Reload to show/hide admin buttons
+
+                // Update pending orders count for admin
+                if (this.isAdmin) {
+                    this.updatePendingOrdersCount();
+                }
             } else if (event === 'PASSWORD_RECOVERY') {
                 // User clicked password reset link - redirect to reset page
                 console.log('Password recovery detected, redirecting to reset page');
@@ -176,6 +200,7 @@ class HardwareCatalogApp {
                 this.isAdmin = false;
                 this.adminButton.showLoggedOut();
                 this.productGrid.setAdminMode(false);
+                this.ordersButton.setAdminMode(false); // Hide orders button
                 this.loadProducts(); // Reload to hide admin buttons
             }
         });
@@ -190,6 +215,7 @@ class HardwareCatalogApp {
 
                 this.adminButton.showLoggedIn(session.user.email);
                 this.productGrid.setAdminMode(this.isAdmin);
+                this.ordersButton.setAdminMode(this.isAdmin); // Show/hide orders button
             }
         } catch (error) {
             console.error('Error checking auth state:', error);
@@ -339,6 +365,17 @@ class HardwareCatalogApp {
         } catch (error) {
             console.error('Error al cargar productos:', error);
             this.productGrid.showEmptyState('Error al cargar productos');
+        }
+    }
+
+    async updatePendingOrdersCount() {
+        if (!this.isAdmin) return;
+
+        try {
+            const count = await this.orderService.getPendingCount();
+            this.ordersButton.setPendingCount(count);
+        } catch (error) {
+            console.error('Error updating pending orders count:', error);
         }
     }
 }
