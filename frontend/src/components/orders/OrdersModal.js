@@ -201,8 +201,8 @@ export class OrdersModal {
         const ordersBody = groupDiv.querySelector('.user-orders-body');
         userOrders.forEach((order, index) => {
             const statusChangeCallback = (orderId, newStatus) => this.handleStatusChange(orderId, newStatus);
-            // Pass false for isAdmin to OrderDetailsRow to hide the Email column in the nested table
-            const orderRow = new OrderDetailsRow(order, index + 1, statusChangeCallback, false);
+            // Pass true for isAdmin (to enable status dropdown), false for showEmail (to hide email column)
+            const orderRow = new OrderDetailsRow(order, index + 1, statusChangeCallback, true, false);
             ordersBody.appendChild(orderRow.render());
         });
 
@@ -235,11 +235,14 @@ export class OrdersModal {
                         <div class="order-cell order-status">Estado</div>
                     </div>
                     <div class="orders-table-body" id="ordersTableBody"></div>
+                    <div class="orders-table-footer">
+                        <div class="footer-cell"></div>
+                        <div class="footer-cell"></div>
+                        <div class="footer-cell footer-label">Total General:</div>
+                        <div class="footer-cell footer-amount">${this.calculateTotalGeneral()}</div>
+                        <div class="footer-cell"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="orders-total-general">
-                <span>Total General: </span>
-                <span class="total-amount">${this.calculateTotalGeneral()}</span>
             </div>
         `;
 

@@ -13,11 +13,16 @@ export class CheckoutService {
         }
 
         try {
+            let userEmail = null;
+            let userPhone = null;
+
             // 1. Save order to database if user is authenticated and orderService is available
             if (this.orderService) {
                 try {
                     const session = await authApi.getSession();
                     if (session && session.user) {
+                        userEmail = session.user.email;
+                        userPhone = session.user.user_metadata?.phone || null;
                         await this.orderService.createOrder(session.user.email, cartItems);
                     } else {
                         throw new Error('User not authenticated - order will not be saved to database');
@@ -35,14 +40,14 @@ export class CheckoutService {
             await new Promise(resolve => setTimeout(resolve, 500));
 
             const confirmed = window.confirm(
-                'El archivo de tu pedido se ha descargado.\n\n' +
-                'Por favor, adjúntalo manualmente en el chat de WhatsApp que se abrirá a continuación.\n\n' +
+                'El archivo de tu pedido se ha descargado.\\n\\n' +
+                'Por favor, adjúntalo manualmente en el chat de WhatsApp que se abrirá a continuación.\\n\\n' +
                 '¿Abrir WhatsApp ahora?'
             );
 
             if (confirmed) {
-                // 3. Open WhatsApp
-                this.openWhatsApp(cartItems);
+                // 3. Open WhatsApp with user email and phone
+                this.openWhatsApp(cartItems, userEmail, userPhone);
             }
 
             return true;
@@ -106,7 +111,7 @@ export class CheckoutService {
         XLSX.writeFile(wb, filename);
     }
 
-    openWhatsApp(cartItems) {
+    openWhatsApp(cartItems, userEmail = null, userPhone = null) {
         const total = cartItems.reduce((sum, item) => sum + (item.product.precio_total * item.quantity), 0);
         const formattedTotal = formatPrice(total);
 
@@ -117,7 +122,15 @@ export class CheckoutService {
             summaryText += `• ${item.product.producto} (x${item.quantity}) - ${itemTotal}\n`;
         });
 
-        const message = `Hola! 👋\n\nTe envío mi pedido:\n\n${summaryText}\n*Total Final: ${formattedTotal}*\n\n(También adjunto el Excel con el detalle completo).\n\nQuedo a la espera de la confirmación. Gracias!`;
+        // Build contact info lines
+        let contactInfo = '';
+        if (userEmail || userPhone) {
+            contactInfo = '\n*Datos de contacto:*\n';
+            if (userEmail) contactInfo += `Email: ${userEmail}\n`;
+            if (userPhone) contactInfo += `Teléfono: ${userPhone}\n`;
+        }
+
+        const message = `Hola! \n\nTe envío mi pedido:${contactInfo}\n*Productos:*\n${summaryText}\n*Total Final: ${formattedTotal}*\n\n(También adjunto el Excel con el detalle completo)\n\nQuedo a la espera de la confirmación. Gracias!`;
 
         const encodedMessage = encodeURIComponent(message);
         const url = `https://wa.me/${this.whatsappNumber}?text=${encodedMessage}`;

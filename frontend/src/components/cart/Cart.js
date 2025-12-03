@@ -108,10 +108,9 @@ export class Cart {
                 const items = this.cartService.getItems();
                 await this.checkoutService.processCheckout(items);
 
-                // Optional: Clear cart after successful checkout?
-                // For now, we keep it so user can see what they ordered or re-order
-                // this.cartService.clearCart();
-                // this.hide();
+                // Clear cart after successful checkout
+                this.cartService.clearCart();
+                this.hide();
             } catch (error) {
                 alert(error.message);
             }

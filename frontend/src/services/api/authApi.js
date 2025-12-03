@@ -13,14 +13,23 @@ export const authApi = {
     },
 
     // Registro de usuario
-    async signUp(email, password) {
-        const { data, error } = await supabase.auth.signUp({
+    async signUp(email, password, phone = null) {
+        const signUpData = {
             email,
             password,
             options: {
                 emailRedirectTo: window.location.origin
             }
-        });
+        };
+
+        // Add phone to user metadata if provided
+        if (phone) {
+            signUpData.options.data = {
+                phone: phone
+            };
+        }
+
+        const { data, error } = await supabase.auth.signUp(signUpData);
         handleSupabaseError(error);
         return data;
     },

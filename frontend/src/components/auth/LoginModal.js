@@ -116,6 +116,19 @@ export class LoginModal {
               </div>
               
               <div class="form-group">
+                <label for="signupPhone" class="form-label">Phone (WhatsApp)</label>
+                <input 
+                  type="tel" 
+                  id="signupPhone" 
+                  class="form-input" 
+                  placeholder="54 343 4123456"
+                  required
+                  pattern="[0-9]{2}\s?[0-9]{3}\s?[0-9]{7}"
+                  title="Enter phone in WhatsApp format: 54 343 4123456 (country code + area code + number)"
+                />
+              </div>
+              
+              <div class="form-group">
                 <label for="signupPassword" class="form-label">Password</label>
                 <div class="password-wrapper">
                   <input 
@@ -390,10 +403,20 @@ export class LoginModal {
     e.preventDefault();
     const email = document.getElementById('signupEmail').value;
     const password = document.getElementById('signupPassword').value;
+    const phone = document.getElementById('signupPhone').value;
+
+    // Validate and normalize phone number (remove spaces)
+    const normalizedPhone = phone.replace(/\s/g, '');
+    const phoneRegex = /^[0-9]{12}$/; // Should be 12 digits after removing spaces
+
+    if (!phoneRegex.test(normalizedPhone)) {
+      this.showError('signupError', 'Please enter a valid phone number in WhatsApp format: 54 343 4803193');
+      return;
+    }
 
     try {
       const { authApi } = await import('../../services/api/authApi.js');
-      await authApi.signUp(email, password);
+      await authApi.signUp(email, password, normalizedPhone);
 
       document.getElementById('signupSuccess').style.display = 'block';
       this.clearError('signupError');

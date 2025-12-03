@@ -188,7 +188,7 @@ export class ProductGrid {
     updateProductCount(count) {
         const countEl = document.getElementById('productCount');
         if (countEl) {
-            countEl.textContent = `Mostrando ${count} producto${count !== 1 ? 's' : ''}`;
+            countEl.innerHTML = `Mostrando ${count} producto${count !== 1 ? 's' : ''} <b>(Precios sujetos a cambios)</b>`;
         }
     }
 
