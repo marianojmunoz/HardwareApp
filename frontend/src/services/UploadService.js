@@ -37,8 +37,6 @@ export class UploadService {
             throw new Error('El archivo está vacío');
         }
 
-        await this.repository.deleteAll();
-
         const productsData = rawData
             .map(row => this.parser.mapToProduct(row))
             .filter(p => p.producto && p.producto.toString().trim() !== '');
@@ -47,95 +45,155 @@ export class UploadService {
             throw new Error('No se encontraron productos válidos en el archivo. Verifica que la columna PRODUCTO tenga datos.');
         }
 
-        // Generate unique codes for all products
-        const productsWithUniqueCodes = productsData.map((product, index) => ({
-            ...product,
-            codigo: this.generateUniqueCode(index)
-        }));
-
-        // Validar que tengan los campos requeridos
-        const invalidProducts = productsWithUniqueCodes.filter(p =>
-            !p.codigo || !p.precio_publico || !p.precio_gremio || !p.precio_total
+        // Validar campos requeridos
+        const invalidProducts = productsData.filter(p =>
+            !p.precio_publico || !p.precio_gremio || !p.precio_total
         );
 
         if (invalidProducts.length > 0) {
             throw new Error(`Hay ${invalidProducts.length} productos con datos incompletos. Verifica que todas las filas tengan PUBLICO, GREMIO y TOTAL.`);
         }
 
-        // Guardar en base de datos
-        const products = await this.repository.createMany(productsWithUniqueCodes);
+        // Estadísticas de procesamiento
+        const stats = {
+            nuevos: 0,
+            actualizados: 0,
+            omitidos: 0,
+            errores: []
+        };
 
-        return products;
+        const newProducts = [];
+
+        // LÓGICA INTELIGENTE: Verificar cada producto
+        for (let i = 0; i < productsData.length; i++) {
+            const product = productsData[i];
+
+            try {
+                // Buscar si el producto ya existe (por codigo_arrobapc Y producto)
+                const existingProduct = await this.repository.findByCodigoAndProducto(
+                    product.codigo_arrobapc || product.codigo,
+                    product.producto
+                );
+
+                if (existingProduct) {
+                    // PRODUCTO EXISTE: Actualizar solo precios
+                    await this.repository.updatePrices(existingProduct.id, {
+                        precio_publico: product.precio_publico,
+                        precio_total: product.precio_total,
+                        precio_gremio: product.precio_gremio
+                    });
+                    stats.actualizados++;
+                } else {
+                    // PRODUCTO NO EXISTE: Agregar como nuevo automáticamente
+                    const uniqueCode = this.generateUniqueCode(stats.nuevos);
+                    newProducts.push({
+                        ...product,
+                        codigo: uniqueCode,
+                        es_nuevo: 'SI' // Marcar automáticamente como nuevo
+                    });
+                    stats.nuevos++;
+                }
+            } catch (error) {
+                stats.errores.push({
+                    producto: product.producto,
+                    error: error.message
+                });
+            }
+        }
+
+        // Insertar productos nuevos en batch
+        let insertedProducts = [];
+        if (newProducts.length > 0) {
+            insertedProducts = await this.repository.createMany(newProducts);
+        }
+
+        return {
+            stats,
+            insertedProducts
+        };
+    }
+
+    /**
+     * Scrape images for products that don't have image_url
+     * @param {Array} products - Array of products
+     * @param {Function} onProgress - Progress callback
+     * @returns {Promise<Array>} Products with scraped images
+     */
+    async scrapeProductImages(products, onProgress = null) {
+        try {
+            // Import scrapeApi dynamically
+            const { scrapeApi } = await import('./api/scrapeApi.js');
+
+            // Filter products that need scraping (no image_url)
+            const productsNeedingScraping = products.filter(p => !p.image_url || p.image_url.trim() === '');
+
+            if (productsNeedingScraping.length === 0) {
+                // All products already have images
+                return products;
+            }
+
+            // Start scraping job
+            const jobId = `scrape-${Date.now()}`;
+            console.log('Starting scraping job:', jobId);
+            await scrapeApi.startBatch(productsNeedingScraping, jobId);
+
+            // Track stats
+            let found = 0;
+            let notFound = 0;
+            const skipped = products.length - productsNeedingScraping.length;
+
+            // Poll for progress with timeout
+            const results = await Promise.race([
+                scrapeApi.pollUntilComplete(jobId, (progress) => {
+                    console.log('Scraping progress:', progress);
+                    // Count found/not found based on last status
+                    if (progress.lastStatus === 'found') found++;
+                    if (progress.lastStatus === 'not_found') notFound++;
+
+                    if (onProgress) {
+                        onProgress({
+                            ...progress,
+                            found,
+                            notFound,
+                            skipped
+                        });
+                    }
+                }),
+                // Timeout after 5 minutes
+                new Promise((_, reject) => setTimeout(() => reject(new Error('Scraping timeout')), 300000))
+            ]);
+
+            // Clean up job
+            await scrapeApi.deleteJob(jobId);
+
+            // Merge results back into original products array
+            const resultsMap = new Map(results.map(r => [r.producto, r]));
+            return products.map(p => {
+                const scrapedProduct = resultsMap.get(p.producto);
+                return scrapedProduct || p;
+            });
+        } catch (error) {
+            console.error('Scraping failed:', error);
+            // Return products without images if scrap ing fails
+            return products;
+        }
     }
 
     /**
      * Generate summary information from uploaded products
-     * @param {Array} products - Array of uploaded products
+     * @param {Object} uploadResult - Result from uploadExcel with stats and insertedProducts
      * @returns {Object} Summary statistics and information
      */
-    getUploadSummary(products) {
-        if (!products || products.length === 0) {
+    getUploadSummary(uploadResult) {
+        if (!uploadResult) {
             return null;
         }
 
-        // Calculate statistics
-        const total = products.length;
-
-        // Price statistics
-        const preciosPublico = products.map(p => p.precio_publico).filter(p => p > 0);
-        const preciosGremio = products.map(p => p.precio_gremio).filter(p => p > 0);
-        const preciosTotal = products.map(p => p.precio_total).filter(p => p > 0);
-
-        const priceStats = {
-            publico: {
-                min: Math.min(...preciosPublico),
-                max: Math.max(...preciosPublico),
-                avg: (preciosPublico.reduce((a, b) => a + b, 0) / preciosPublico.length).toFixed(2)
-            },
-            gremio: {
-                min: Math.min(...preciosGremio),
-                max: Math.max(...preciosGremio),
-                avg: (preciosGremio.reduce((a, b) => a + b, 0) / preciosGremio.length).toFixed(2)
-            },
-            total: {
-                min: Math.min(...preciosTotal),
-                max: Math.max(...preciosTotal),
-                avg: (preciosTotal.reduce((a, b) => a + b, 0) / preciosTotal.length).toFixed(2)
-            }
-        };
-
-        // Stock statistics
-        const stockValues = products.map(p => p.stock || 0);
-        const totalStock = stockValues.reduce((a, b) => a + b, 0);
-        const withStock = products.filter(p => (p.stock || 0) > 0).length;
-        const withoutStock = total - withStock;
-
-        // Warranty statistics
-        const warranties = products.map(p => p.garantia || 0).filter(g => g > 0);
-        const avgWarranty = warranties.length > 0
-            ? (warranties.reduce((a, b) => a + b, 0) / warranties.length).toFixed(1)
-            : 0;
-
-        // Sample products (first 5)
-        const sampleProducts = products.slice(0, 5).map(p => ({
-            codigo: p.codigo,
-            producto: p.producto,
-            precio_publico: p.precio_publico,
-            precio_gremio: p.precio_gremio,
-            precio_total: p.precio_total,
-            stock: p.stock || 0
-        }));
+        const { stats, insertedProducts } = uploadResult;
 
         return {
-            total,
-            priceStats,
-            stock: {
-                total: totalStock,
-                withStock,
-                withoutStock
-            },
-            avgWarranty,
-            sampleProducts,
+            stats,
+            insertedProducts,
             timestamp: new Date().toISOString()
         };
     }

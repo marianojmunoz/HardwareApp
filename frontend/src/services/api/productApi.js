@@ -74,6 +74,39 @@ export const productApi = {
         return true;
     },
 
+    // Buscar producto por codigo_arrobapc Y nombre (para verificar duplicados)
+    async findByCodigoAndProducto(codigo_arrobapc, producto) {
+        const { data, error } = await supabase
+            .from('products')
+            .select('*')
+            .eq('codigo_arrobapc', codigo_arrobapc)
+            .eq('producto', producto)
+            .maybeSingle();
+
+        handleSupabaseError(error);
+        return data;
+    },
+
+    // Actualizar solo precios de un producto
+    async updatePrices(id, prices) {
+        const { precio_publico, precio_total, precio_gremio } = prices;
+
+        const { data, error } = await supabase
+            .from('products')
+            .update({
+                precio_publico,
+                precio_total,
+                precio_gremio,
+                updated_at: new Date().toISOString()
+            })
+            .eq('id', id)
+            .select()
+            .single();
+
+        handleSupabaseError(error);
+        return data;
+    },
+
     // Eliminar TODOS los productos
     async deleteAll() {
         const { error } = await supabase

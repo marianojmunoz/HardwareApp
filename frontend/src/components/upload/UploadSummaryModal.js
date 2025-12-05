@@ -72,62 +72,70 @@ export class UploadSummaryModal {
     }
 
     generateSummaryHTML(summary) {
-        const formatPrice = (price) => `$${parseFloat(price).toLocaleString('es-AR', { maximumFractionDigits: 0 })}`;
+        const { stats } = summary;
 
         return `
             <div class="summary-stats">
-                <div class="stat-card">
-                    <div class="stat-icon">📦</div>
+                <div class="stat-card stat-nuevos">
+                    <div class="stat-icon">✅</div>
                     <div class="stat-info">
-                        <div class="stat-value">${summary.total}</div>
-                        <div class="stat-label">Productos Cargados</div>
+                        <div class="stat-value">${stats.nuevos}</div>
+                        <div class="stat-label">Productos Nuevos</div>
                     </div>
                 </div>
 
-                <div class="stat-card">
-                    <div class="stat-icon">💰</div>
+                <div class="stat-card stat-actualizados">
+                    <div class="stat-icon">🔄</div>
                     <div class="stat-info">
-                        <div class="stat-value">${formatPrice(summary.priceStats.total.avg)}</div>
-                        <div class="stat-label">Precio Promedio</div>
+                        <div class="stat-value">${stats.actualizados}</div>
+                        <div class="stat-label">Precios Actualizados</div>
                     </div>
                 </div>
 
-                <div class="stat-card">
-                    <div class="stat-icon">📊</div>
+                <div class="stat-card stat-omitidos">
+                    <div class="stat-icon">⏭️</div>
                     <div class="stat-info">
-                        <div class="stat-value">${formatPrice(summary.priceStats.total.max)}</div>
-                        <div class="stat-label">Precio Máximo</div>
+                        <div class="stat-value">${stats.omitidos}</div>
+                        <div class="stat-label">Omitidos</div>
                     </div>
                 </div>
             </div>
 
-            <div class="summary-section">
-                <h3>💰 Precios Total</h3>
-                <div class="price-stats">
-                    <span><strong>Mínimo:</strong> ${formatPrice(summary.priceStats.total.min)}</span>
-                    <span><strong>Máximo:</strong> ${formatPrice(summary.priceStats.total.max)}</span>
-                    <span><strong>Promedio:</strong> ${formatPrice(summary.priceStats.total.avg)}</span>
-                </div>
-            </div>
-
-            <div class="summary-section">
-                <h3>📋 Muestra de Productos (primeros 5)</h3>
-                <div class="product-list">
-                    ${summary.sampleProducts.map(p => `
-                        <div class="product-preview">
-                            <div class="product-name">${p.producto}</div>
-                            <div class="product-prices">
-                                <span class="price-total">Precio: ${formatPrice(p.precio_total)}</span>
+            ${stats.errores.length > 0 ? `
+                <div class="summary-section error-section">
+                    <h3>⚠️ Errores</h3>
+                    <div class="error-list">
+                        ${stats.errores.slice(0, 5).map(err => `
+                            <div class="error-item">
+                                <strong>${err.producto}</strong>: ${err.error}
                             </div>
-                        </div>
-                    `).join('')}
-                    ${summary.total > 5 ? `
-                        <div class="more-products">
-                            ... y ${summary.total - 5} productos más
-                        </div>
-                    ` : ''}
+                        `).join('')}
+                        ${stats.errores.length > 5 ? `
+                            <div class="more-errors">... y ${stats.errores.length - 5} errores más</div>
+                        ` : ''}
+                    </div>
                 </div>
-            </div>
+            ` : ''}
+
+            ${summary.insertedProducts && summary.insertedProducts.length > 0 ? `
+                <div class="summary-section">
+                    <h3>📋 Nuevos Productos Agregados (primeros 5)</h3>
+                    <div class="product-list">
+                        ${summary.insertedProducts.slice(0, 5).map(p => `
+                            <div class="product-preview">
+                                <div class="product-name">${p.producto}</div>
+                                <div class="product-code">Código: ${p.codigo}</div>
+                            </div>
+                        `).join('')}
+                        ${summary.insertedProducts.length > 5 ? `
+                            <div class="more-products">
+                                ... y ${summary.insertedProducts.length - 5} productos más
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+            ` : ''}
         `;
     }
 }
+

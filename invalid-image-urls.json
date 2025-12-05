@@ -1,0 +1,930 @@
+[
+  {
+    "id": "4e2ce5b7-f578-44ca-9bb1-2ce3901761e1",
+    "codigo": "HW-20251204-171026-8160000",
+    "producto": "ADAPTADOR PAD NUMERICO GENIUS USB 110",
+    "image_url": "http://190.183.223.6/gold/images/varios/NUMERICOpad110.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "0ba99a97-533f-405f-b07d-e4165b816e67",
+    "codigo": "HW-20251204-171027-3820004",
+    "producto": "ADAPTADOR USB-C A HDMI 4K 60MHZ   TPLINK",
+    "image_url": "http://190.183.223.6/gold/images/varios/UA520C.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "549b271f-feb7-4ad9-81c6-a2d6767772a8",
+    "codigo": "HW-20251204-171031-4070017",
+    "producto": "BASE COOLER TRUST KUZO STAND NOTEBOOK GXT 220",
+    "image_url": "http://190.183.223.6/gold/images/varios/BASEKUZO.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "15f3e5a8-31cc-40b2-ac29-7fa5c1520e03",
+    "codigo": "HW-20251204-171031-4660018",
+    "producto": "BASE COOLER TRUST AZUL STAND NOTEBOOK",
+    "image_url": "http://190.183.223.6/gold/images/varios/BASESTAND.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "a067750d-b807-4f74-b4f8-2c0144e0e039",
+    "codigo": "HW-20251204-171038-8820045",
+    "producto": "CABLE USB 3.0  3 MTS MACHO  A - A",
+    "image_url": "http://190.183.223.6/gold/images/cable/cableusbAA.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "de9a239f-b69a-48e9-bf3d-411d05eef46f",
+    "codigo": "HW-20251204-171041-5930054",
+    "producto": "CARGADOR LITEON ACER - 19V 3,42A 3.0×1mm 65W ORIGINAL",
+    "image_url": "http://190.183.223.6/gold/images/varios/CARGADORNOTEBOOKACER-19V3-42A3x1.JPG",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "69b19929-183c-4b21-8b7d-336ea0feaab7",
+    "codigo": "HW-20251204-171041-0330055",
+    "producto": "CARGADOR LITEON ACER - 19V 3,42A 5.5×1.7 65W ORIGINAL    PUNTA AMARILLA",
+    "image_url": "http://190.183.223.6/gold/images/varios/CARGADORNOTEBOOKACER-19V3-42A.JPG",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "6df87924-b391-4154-98f4-798d98b3b5df",
+    "codigo": "HW-20251204-171042-2210056",
+    "producto": "CARGADOR NETBOOK ACER mini - 19V 1.58A ORIGINAL */*",
+    "image_url": "http://190.183.223.6/gold/images/varios/CARGADORNOTEBOOKACERmini-19V1-58A.JPG",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "d7fdcf44-26a7-4632-8b42-27c33677b66b",
+    "codigo": "HW-20251204-171044-4810065",
+    "producto": "CARRY DISK SATA 3.5\" INTERNO SATA",
+    "image_url": "http://190.183.223.6/gold/images/SATA.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "cd0aa8e6-182b-4a1b-a388-c6dfee51cedc",
+    "codigo": "HW-20251204-171044-1090066",
+    "producto": "CARRY DISK SSD M.2 HIKSEMI USB 3.2 typeC",
+    "image_url": "http://190.183.223.6/gold/images/disco/CASEHISEMIM26.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "2f91e670-dd01-4fa3-b826-3a9138fc0bd4",
+    "codigo": "HW-20251204-171044-5600067",
+    "producto": "CARRY DISK SSD  NETAC HD  SSD USB 3.2    SSD WH12",
+    "image_url": "http://190.183.223.6/gold/images/disco/CASEHISEMINETAC.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "0a285e1a-d67f-4cea-8248-1916b557c198",
+    "codigo": "HW-20251204-171046-0160073",
+    "producto": "CARTUCHO EPSON L4150/4160 - TINTA. AMARILLO T504420",
+    "image_url": "http://190.183.223.6/gold/images/T504420.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "758512bc-529e-4924-8bd3-6e4511c0efbf",
+    "codigo": "HW-20251204-171046-4550074",
+    "producto": "CARTUCHO EPSON L4150/4160 - TINTA. CYAN T504220",
+    "image_url": "http://190.183.223.6/gold/images/T504220.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "b2e4a3c0-98ca-4554-b3ae-5fd465498586",
+    "codigo": "HW-20251204-171047-7790075",
+    "producto": "CARTUCHO EPSON L4150/4160 - TINTA. MAGENTA T504320",
+    "image_url": "http://190.183.223.6/gold/images/T504320.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "afdcfec4-dae8-436b-85d6-c568fe87c0da",
+    "codigo": "HW-20251204-171047-3700076",
+    "producto": "CARTUCHO EPSON L4150/4160 - TINTA. NEGRO T504120",
+    "image_url": "http://190.183.223.6/gold/images/T504120.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "55e8dc55-c3d2-470a-b555-d9254f5399a4",
+    "codigo": "HW-20251204-171050-0370087",
+    "producto": "CARTUCHO PWT BOTELLA NEGRA 250cm3 P/EPSON",
+    "image_url": "http://190.183.223.6/gold/images/EPSONBOTELLAPWT.JPG",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "04cc219e-78ac-43cf-bc8a-6a28054134d6",
+    "codigo": "HW-20251204-171050-3560088",
+    "producto": "CARTUCHO PWT EPSON  BOTELLA CIAN  250cm3",
+    "image_url": "http://190.183.223.6/gold/images/HPBOTELLAGLOBAL.JPG",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "17b50054-c1be-4873-989e-292480335312",
+    "codigo": "HW-20251204-171051-5310089",
+    "producto": "CARTUCHO PWT EPSON  BOTELLA MAGENTA 250cm3",
+    "image_url": "http://190.183.223.6/gold/images/HPBOTELLAGLOBAL.JPG",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "d9651151-8933-409c-9a50-3e8abf387862",
+    "codigo": "HW-20251204-171051-4240090",
+    "producto": "CARTUCHO PWT EPSON   BOTELLA AMARILLA 250cm3",
+    "image_url": "http://190.183.223.6/gold/images/HPBOTELLAGLOBAL.JPG",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "fa0705c2-9280-4a38-a86f-41d584c591a2",
+    "codigo": "HW-20251204-171052-3270095",
+    "producto": "CARTUCHO PWT HP  BOTELLA NEGRA  250cm3",
+    "image_url": "http://190.183.223.6/gold/images/HPBOTELLAGLOBAL.JPG",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "a5c3b877-2cf7-4533-a80e-ffcdd5b54663",
+    "codigo": "HW-20251204-171052-0770096",
+    "producto": "CARTUCHO PWT HP  BOTELLA CIAN  250cm3",
+    "image_url": "http://190.183.223.6/gold/images/HPBOTELLAGLOBAL.JPG",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "88868fb8-9611-4309-9499-2de4d5f7e800",
+    "codigo": "HW-20251204-171053-2240097",
+    "producto": "CARTUCHO PWT HP  BOTELLA MAGENTA 250cm3",
+    "image_url": "http://190.183.223.6/gold/images/HPBOTELLAGLOBAL.JPG",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "04fe227a-0a35-4535-8320-5581293476de",
+    "codigo": "HW-20251204-171053-1890098",
+    "producto": "CARTUCHO PWT HP  BOTELLA AMARILLA 250cm3",
+    "image_url": "http://190.183.223.6/gold/images/HPBOTELLAGLOBAL.JPG",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "71e164ca-b83f-4f4d-82b7-dfb9271d4a11",
+    "codigo": "HW-20251204-171101-6940126",
+    "producto": "CARTUCHO HP 920 NEGRO HP 920",
+    "image_url": "http://190.183.223.6/gold/images/globaltinta.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "cc46495c-0308-4dd2-aeaa-376d81b39eca",
+    "codigo": "HW-20251204-171101-1430127",
+    "producto": "CARTUCHO Global Electronics 920 NEGRO HP 920",
+    "image_url": "http://190.183.223.6/gold/images/globaltinta.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "40300289-f9ff-49eb-9449-1ff497001cd4",
+    "codigo": "HW-20251204-171102-1280128",
+    "producto": "CARTUCHO Global Electronics 920 CIAN HP 920",
+    "image_url": "http://190.183.223.6/gold/images/globaltinta.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "35b04388-204b-47a4-90f6-b75ccf7c7f60",
+    "codigo": "HW-20251204-171102-0130129",
+    "producto": "CARTUCHO Global Electronics 920 AMARILLO HP 920",
+    "image_url": "http://190.183.223.6/gold/images/globaltinta.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "8a09586f-504f-4229-8103-20a2d5f71e36",
+    "codigo": "HW-20251204-171102-2410130",
+    "producto": "CARTUCHO Global Electronics 920 MAGENTA HP 920",
+    "image_url": "http://190.183.223.6/gold/images/globaltinta.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "f3527b3e-9acf-4b96-999f-0422dc6de4f4",
+    "codigo": "HW-20251204-171102-7150131",
+    "producto": "CARTUCHO Global Electronics 932 NEGRO HP 933",
+    "image_url": "http://190.183.223.6/gold/images/globaltinta.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "12f0e0b1-1366-44b5-b988-0ba99f2ee81f",
+    "codigo": "HW-20251204-171103-6230132",
+    "producto": "CARTUCHO Global Electronics 933 CIAN HP 933",
+    "image_url": "http://190.183.223.6/gold/images/globaltinta.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "415dd10f-2294-4f56-b3f2-5897de42fa0e",
+    "codigo": "HW-20251204-171103-1220133",
+    "producto": "CARTUCHO Global Electronics 933 AMARILLO HP 933",
+    "image_url": "http://190.183.223.6/gold/images/globaltinta.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "47be8349-e291-4c0a-8b7c-a6f51091fbd8",
+    "codigo": "HW-20251204-171103-2890134",
+    "producto": "CARTUCHO Global Electronics 933 MAGENTA HP 933",
+    "image_url": "http://190.183.223.6/gold/images/globaltinta.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "4287b9b9-4dbd-4c54-9b05-af0623cecf1e",
+    "codigo": "HW-20251204-171104-0290135",
+    "producto": "CARTUCHO Global Electronics HP 940 NEGRO HP 8000    C4902AL",
+    "image_url": "http://190.183.223.6/gold/images/globaltinta.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "872a7a57-d40c-4471-9bce-e10781bbf609",
+    "codigo": "HW-20251204-171104-5050136",
+    "producto": "CARTUCHO Global Electronics HP 940 CIAN HP 8000",
+    "image_url": "http://190.183.223.6/gold/images/globaltinta.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "3105350e-04fe-4dab-9032-a2a0652887ef",
+    "codigo": "HW-20251204-171104-6490137",
+    "producto": "CARTUCHO Global Electronics HP 940 MAGENTA HP 8000    C4902AL",
+    "image_url": "http://190.183.223.6/gold/images/globaltinta.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "ba25ccfa-2230-4289-aec7-5e17a7535a86",
+    "codigo": "HW-20251204-171104-5220138",
+    "producto": "CARTUCHO Global Electronics HP 940 AMARIILO  HP 8000",
+    "image_url": "http://190.183.223.6/gold/images/globaltinta.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "1ad6ce28-7c86-4d23-9ab1-e5d863de8e69",
+    "codigo": "HW-20251204-171105-8350139",
+    "producto": "CARTUCHO GLOBAL ELECTRONICS HP 950XL CN045AL  8100 8600 8610",
+    "image_url": "http://190.183.223.6/gold/images/globaltinta.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "eabb3481-6036-4215-903f-aa017c3efdb0",
+    "codigo": "HW-20251204-171105-7130140",
+    "producto": "CARTUCHO GLOBAL ELECTRONICS HP 951XL CN047AL  Magenta",
+    "image_url": "http://190.183.223.6/gold/images/globaltinta.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "57643033-a987-4ba7-89f7-933028f9e89f",
+    "codigo": "HW-20251204-171105-4350141",
+    "producto": "CARTUCHO GLOBAL ELECTRONICS HP  951XL CN046AL Cyan",
+    "image_url": "http://190.183.223.6/gold/images/globaltinta.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "10fb52bb-10b5-491f-b914-f4367bb147fd",
+    "codigo": "HW-20251204-171106-7040142",
+    "producto": "CARTUCHO GLOBAL ELECTRONICS HP 951XL 951XL CN048AL  Yellow",
+    "image_url": "http://190.183.223.6/gold/images/globaltinta.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "452c6f26-1c64-4215-a22b-74c1a55ae204",
+    "codigo": "HW-20251204-171107-2560146",
+    "producto": "CONECTOR GLC PACK X 100  RJ45  CAT5E",
+    "image_url": "http://190.183.223.6/gold/images/cable/rj45GLC.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "aeb43f97-2021-4f36-a706-af8ac1e6842a",
+    "codigo": "HW-20251204-171109-4320153",
+    "producto": "CPU AMD RYZEN 5 5500 AM4 SIN VIDEO",
+    "image_url": "http://190.183.223.6/gold/images/amd/RYZEN5500.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "d6519a34-39f3-430f-a6ae-4dc911749f0b",
+    "codigo": "HW-20251204-171109-4160155",
+    "producto": "CPU AMD  Ryzen 7 5700G   5 gen",
+    "image_url": "http://190.183.223.6/gold/images/amd/RYZEN5700G.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "6a79b6dd-ec52-4414-9c57-5082b143fe4a",
+    "codigo": "HW-20251204-171111-2370162",
+    "producto": "CPU AMD  Ryzen 7 AM5  7700x  C VIDEO  sin COOLER",
+    "image_url": "http://190.183.223.6/gold/images/amd/RYZEN7700x.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "4a943a4f-2f2d-4257-909a-3a0a2b66957e",
+    "codigo": "HW-20251204-171112-9980164",
+    "producto": "CPU AMD  Ryzen 7 AM5  8700G C COOLER CON VIDEO",
+    "image_url": "http://190.183.223.6/gold/images/amd/RYZEN8700G.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "97bdb807-1cd1-48e5-a36d-3c14ea93fa2b",
+    "codigo": "HW-20251204-171121-7390196",
+    "producto": "DISCO SSD NETAC 1TB  N535N M.2 2280 SATAIII 3D NAND",
+    "image_url": "http://190.183.223.6/gold/images/disco/N5351TB.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "efb38dc5-550a-4e26-811b-acb197a62f47",
+    "codigo": "HW-20251204-171121-2930197",
+    "producto": "DISCO SOLIDO SDD NETAC N535S 960GB SATA  BOX",
+    "image_url": "http://190.183.223.6/gold/images/disco/N535S960.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "1b0b0b5c-3a6e-4374-86d5-9042c5751049",
+    "codigo": "HW-20251204-171121-0350198",
+    "producto": "DISCO 1000 GB 7200  SATA III  SEAGATE IRONWOLF  SERVER",
+    "image_url": "http://190.183.223.6/gold/images/disco/hd1000SEANAS.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "0e6ce0c3-17ae-49d8-b3f2-70027294e170",
+    "codigo": "HW-20251204-171122-3960200",
+    "producto": "DISCO 2000 GB 7200 SEAGATE Vigilancia Skyhawk purple dvr",
+    "image_url": "http://190.183.223.6/gold/images/disco/hd2000SEA2TERA.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "866ee155-e0a7-41b7-9bd9-ce9b22448698",
+    "codigo": "HW-20251204-171122-4380201",
+    "producto": "DISCO 4000 GB  WESTERN DIGITAL BLUE",
+    "image_url": "http://190.183.223.6/gold/images/disco/WD40EZRZ.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "b3fddfb7-33f1-4709-af4b-982586908c62",
+    "codigo": "HW-20251204-171122-0050202",
+    "producto": "DISCO 4000 GB  WESTERN DIGITAL RED PLUS",
+    "image_url": "http://190.183.223.6/gold/images/disco/WD40EFPX.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "876b7cfe-b217-4014-afea-38b685a1afcc",
+    "codigo": "HW-20251204-171124-4560206",
+    "producto": "DISCO 8TB  RED PLUS  WESTERN DIGITAL        WD80EFPX",
+    "image_url": "http://190.183.223.6/gold/images/disco/WD80EFPX.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "fb057484-21ff-495b-90ca-d4ee7d5fbd78",
+    "codigo": "HW-20251204-171124-0550208",
+    "producto": "DISPLAY  NOTEBOOK   CONSULTAR PRECIOS Y MODELOS",
+    "image_url": "http://190.183.223.6/gold/images/red/LP140WH4.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "b442b41b-5930-4c12-8829-a8927e2f0c40",
+    "codigo": "HW-20251204-171124-0100209",
+    "producto": "EProtector Voltaje 1500W Forza FVP 1202N A Zion 220V",
+    "image_url": "http://190.183.223.6/gold/images/varios/FORZA1202N.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "5cd9847b-ba95-4832-80af-bfe05d3509ba",
+    "codigo": "HW-20251204-171125-8000212",
+    "producto": "FUENTE  12V 2,1A CAMARAS CCTV cargador dvr",
+    "image_url": "http://190.183.223.6/gold/images/gab/fuente5v.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "9cffabeb-5d84-4dd2-9fcc-dcfba9863e8f",
+    "codigo": "HW-20251204-171126-4920214",
+    "producto": "FUENTE 600W MAGNUTECH ATX600",
+    "image_url": "http://190.183.223.6/gold/images/gab/fuente600MAGNU.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "26c9f0f0-bd7e-40ec-a221-92828ad6f7e9",
+    "codigo": "HW-20251204-171127-3100220",
+    "producto": "FUENTE GIGABYTE 650W 80 PLUS WHITE SILVER   GP-P650SS ICE",
+    "image_url": "http://190.183.223.6/gold/images/gab/GP-P650SS%20ICE.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "4041bf0a-0813-424d-a95a-258aef40c428",
+    "codigo": "HW-20251204-171128-7950221",
+    "producto": "FUENTE GIGABYTE 750W 80 PLUS BRONZE  GP-P750BS",
+    "image_url": "http://190.183.223.6/gold/images/gab/GP-P750BS.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "622f7ec2-6c5c-4b35-a523-78b57f272052",
+    "codigo": "HW-20251204-171130-5810231",
+    "producto": "GRASA SILICONADA C/ PARTICULAS G60METALICAS PASTA JERINGA 5CC",
+    "image_url": "http://190.183.223.6/gold/images/varios/JGRASA.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "8d49a7db-782c-45d5-ba80-89a43a583a29",
+    "codigo": "HW-20251204-171136-4460247",
+    "producto": "MALETIN TRUST MALETIN ATLANTA NOTEBOOK 15.6 RECICLED",
+    "image_url": "http://190.183.223.6/gold/images/varios/maletinTRUST.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "6a3ee210-a1d4-4a52-ac4f-c6b2069af645",
+    "codigo": "HW-20251204-171140-0770264",
+    "producto": "MEMORIA DDR4 16GB 3600 HIKSEMI CON DISIPADOR RGB",
+    "image_url": "http://190.183.223.6/gold/images/memo/HIKSEMI16ddr4D3600.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "39487436-3584-42a5-bdc0-2150341ee698",
+    "codigo": "HW-20251204-171141-4230267",
+    "producto": "MEMORIA DDR5 32GB 5600 HIKSEMI CON DISIPADOR",
+    "image_url": "http://190.183.223.6/gold/images/memo/HIKSEMD16ddr5D.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "f0d190c8-248c-4aca-bb7f-330f06dded03",
+    "codigo": "HW-20251204-171141-5360268",
+    "producto": "MEMORIA DDR5 32GB KINGSTON 5600MHZ CL",
+    "image_url": "http://190.183.223.6/gold/images/memo/kingston32gb5600.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "711fe13d-f137-4bf0-8497-d2d68abafd18",
+    "codigo": "HW-20251204-171142-4880272",
+    "producto": "MEMORIA SD HC 32 GB  100MB/s SANDISK MICRO SD CLASS 10   Ultra plus",
+    "image_url": "http://190.183.223.6/gold/images/memo/sd32MICRO10.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "211a46c0-879d-4fac-a019-acc6dc903408",
+    "codigo": "HW-20251204-171145-6220281",
+    "producto": "MEMORIA SODIMM  DDR4L  8 GB  MEMOX  3200",
+    "image_url": "http://190.183.223.6/gold/images/memo/sodimmLEXAR8gb3200.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "b141940b-02a3-43f5-84ee-e115c89a79de",
+    "codigo": "HW-20251204-171145-7520282",
+    "producto": "MEMORIA SODIMM  DDR4L  8 GB  LEXAR  3200",
+    "image_url": "http://190.183.223.6/gold/images/memo/sodimmLEXAR8gb3200.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "79c68a4a-04e5-4c25-8ae3-13620555341b",
+    "codigo": "HW-20251204-171147-6380289",
+    "producto": "MONITOR  LED HIKVISION  24\"  DS-D5024FN HDMI  VGA FULL HD",
+    "image_url": "http://190.183.223.6/gold/images/lcd/DS-D5024FN.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "4202e2b0-95c5-4a67-aa77-e6a44af009a8",
+    "codigo": "HW-20251204-171148-2480291",
+    "producto": "MONITOR ASUS 27\" WIDE SCREEN IPS 100HZ",
+    "image_url": "http://190.183.223.6/gold/images/lcd/VA27EHF-J.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "539810cf-fe4a-4fde-8a11-f97cc7c4bb73",
+    "codigo": "HW-20251204-171149-0070294",
+    "producto": "MOUSE LOGITECH   USB  M90 Dark Midnight",
+    "image_url": "http://190.183.223.6/gold/images/tecla/mouselogitechm90.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "b1083e1b-255c-4e66-958d-0ff1ad1cd27d",
+    "codigo": "HW-20251204-171149-5300296",
+    "producto": "MOUSE GENIUS MICROTRAVELER  RUBI  RETRACTIL",
+    "image_url": "http://190.183.223.6/gold/images/tecla/MICROTRAVELER.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "c52b73ad-5e27-4cdb-a5b4-8cb6884d7e17",
+    "codigo": "HW-20251204-171149-1050297",
+    "producto": "MOUSE GENIUS  NX-7000 USB WIRELESS VARIOS COLORES",
+    "image_url": "http://190.183.223.6/gold/images/tecla/NX7000.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "7958972c-6f55-42e5-a036-497952619482",
+    "codigo": "HW-20251204-171150-6640298",
+    "producto": "MOUSE GENIUS  NX-7009 USB WIRELESS VARIOS COLORES",
+    "image_url": "http://190.183.223.6/gold/images/tecla/NX7009.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "2ee4cf2c-3bc4-4ae1-a5b1-85541acd6ee6",
+    "codigo": "HW-20251204-171151-0000303",
+    "producto": "MOUSE TRUST GAMER RIXA Y MOUSE PAD GTX781",
+    "image_url": "http://190.183.223.6/gold/images/tecla/TRUSTRIXA.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "3871dcff-80e4-43c9-8af9-2f4fa42fb522",
+    "codigo": "HW-20251204-171152-8170309",
+    "producto": "MULTIFUNCION LASER BROTHER DCPL2540DW",
+    "image_url": "http://190.183.223.6/gold/images/impre/DCP-L2540dw.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "235e9bda-c543-46fa-8ff1-4716e9fa4861",
+    "codigo": "HW-20251204-171153-9570312",
+    "producto": "NOTEBOOK LENOVO 3 15AMN8 15.6\" FHD AMD R5 7520U 8GB 5500MHZ DDR5 512GB NVME",
+    "image_url": "http://190.183.223.6/gold/images/notebook/LR515AMN8.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "1d4b3ca3-e803-431e-9ea2-be9608ecb4b0",
+    "codigo": "HW-20251204-171154-2490315",
+    "producto": "NOTEBOOK  ASUS 15.6 E1504 I-N100  15 256G 4G FREE FULL HP",
+    "image_url": "http://190.183.223.6/gold/images/notebook/m13060.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "c2216e9e-5d03-4c0d-8e4d-672a49748dc9",
+    "codigo": "HW-20251204-171155-5650317",
+    "producto": "NOTEBOOK  ASUS 15.6 E1504 Vivobook Ryzen 5 512GB  8GB FULL HP",
+    "image_url": "http://190.183.223.6/gold/images/notebook/90NB0ZR2-M02NY0.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "2e187d52-f2ab-40a4-bb79-e170d8b863fb",
+    "codigo": "HW-20251204-171156-5570319",
+    "producto": "NOTEBOOK BANGHO MAX M5  I3  14\" 8GB SSD 240  Free WIFI",
+    "image_url": "http://190.183.223.6/gold/images/notebook/G68P1KF6I2X0XX5FXC20.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "9257ea47-4f2c-4515-8dfb-39f31ea52949",
+    "codigo": "HW-20251204-171157-6320323",
+    "producto": "NOTEBOOK BANGHO 14\" MAX L5 R5 F Ryzen 5 7430U  NVME 480  8GB WIFI BLUETOOTH",
+    "image_url": "http://190.183.223.6/gold/images/notebook/G47R3RFEI9XGXX4FXC20.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "efdfc3d9-63f9-4297-9344-a5ade27926ce",
+    "codigo": "HW-20251204-171158-5040327",
+    "producto": "NOTEBOOK BANGHO 15\" MAX M5  Intel i5  NVME 480  8GB WIFI BLUETOOTH",
+    "image_url": "http://190.183.223.6/gold/images/notebook/G68P2JFEI2X0XX5FXC20.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "5dcbe2f4-b014-4dd5-92b1-7c9ae8e6aa90",
+    "codigo": "HW-20251204-171158-8290328",
+    "producto": "NOTEBOOK BANGHO 15\" MAX M5  Intel i5  NVME 480  16GB WIFI BLUETOOTH",
+    "image_url": "http://190.183.223.6/gold/images/notebook/G68P2JFEI2X0XX5FXC20.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "98af80ad-da3a-4d04-a8c1-b6bf30541c5f",
+    "codigo": "HW-20251204-171158-3350329",
+    "producto": "NOTEBOOK BANGHO 15\" MAX L5  Intel i7  16gb NVME 480gb",
+    "image_url": "http://190.183.223.6/gold/images/notebook/G52J7IFGIFDC150.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "13e583fd-6b9e-4f52-ae51-6d5d93434d2d",
+    "codigo": "HW-20251204-171159-1980330",
+    "producto": "NOTEBOOK BANGHO  Game Master GM 15Z13 RTX3050 i7 13ava F 15.6\" FHD ddr4 1TB ssd nvme 16T Freesoft",
+    "image_url": "http://190.183.223.6/gold/images/notebook/GM15Z13.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "83fe12e8-bddd-4e10-8000-2defd8f00501",
+    "codigo": "HW-20251204-171159-7040331",
+    "producto": "NOTEBOOK BANGHO  Game Master GM 15Z13 RTX4050 i7 13ava F 15.6\" FHD ddr4 1TB ssd nvme 16T Freesoft",
+    "image_url": "http://190.183.223.6/gold/images/notebook/GM15Z13.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "16df7c1c-435e-4026-bcaf-2c4069ebf4ac",
+    "codigo": "HW-20251204-171201-2630340",
+    "producto": "PAD GX GAMING GENIUS 600H RGB",
+    "image_url": "http://190.183.223.6/gold/images/tecla/G-600HRGB.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "31c39fce-2831-4209-8925-1d5532de553d",
+    "codigo": "HW-20251204-171201-5370341",
+    "producto": "PAPEL Glossy Fotografia 4R  100x150 mm 200grs GLOBAL ELECTRONICS 20 hojas",
+    "image_url": "http://190.183.223.6/gold/images/globalpapel100x150.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "d91db793-58b2-4151-9084-b5a662822862",
+    "codigo": "HW-20251204-171202-2530342",
+    "producto": "PAPEL Glossy Fotografia 5R 130x180 mm 200grs GLOBAL ELECTRONICS 20 hojas",
+    "image_url": "http://190.183.223.6/gold/images/globalpapel100x180.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "b00e0b01-c6e3-46a9-b6e4-9eff53cee3b6",
+    "codigo": "HW-20251204-171202-2570344",
+    "producto": "PARLANTES PERFORMANCE S2027",
+    "image_url": "http://190.183.223.6/gold/images/sonido/S2027.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "4f437f89-af32-4857-9e97-cf7b4cb8deb8",
+    "codigo": "HW-20251204-171203-0400347",
+    "producto": "PARLANTE GENIUS SP-U125 NEGRO",
+    "image_url": "http://190.183.223.6/gold/images/sonido/SP-U125.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "b36ddd75-1d8c-4c2c-8b7c-4847b366fc49",
+    "codigo": "HW-20251204-171207-2300361",
+    "producto": "PENDRIVE USB HIKSEMI 32Gb  2.0 RNB",
+    "image_url": "http://190.183.223.6/gold/images/memo/HIKS64GBM200.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "478ab42c-327a-49b8-a5cd-06f6890d067b",
+    "codigo": "HW-20251204-171208-9240364",
+    "producto": "PENDRIVE USB 128GB KINGSTON DTXM 3,2 USB",
+    "image_url": "http://190.183.223.6/gold/images/memo/pen128dtxON.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "238f93d6-da29-404b-b9c1-854de9a92899",
+    "codigo": "HW-20251204-171212-0690380",
+    "producto": "PLACA DE RED  USB A  RJ45   UE300C TPLINK GIGARED",
+    "image_url": "http://190.183.223.6/gold/images/varios/USBREDUE300c.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "7896a00b-f38f-4fe9-97ee-30933bb64d02",
+    "codigo": "HW-20251204-171213-7680384",
+    "producto": "PUNTERO LASER GENIUS MEDIA POINTER 100",
+    "image_url": "http://190.183.223.6/gold/images/varios/mediapointer2.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "52045397-080d-4d07-9587-c89d2196bbaf",
+    "codigo": "HW-20251204-171217-7040400",
+    "producto": "SILLA GAMER  Raptor Throne R1 Tela Gris",
+    "image_url": "http://190.183.223.6/gold/images/gab/RAP-SILLA-R1-GRIS.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "26fed153-760f-47db-b01c-c02de6e159bf",
+    "codigo": "HW-20251204-171217-7550401",
+    "producto": "SILLA GAMER RAIDMAX DK-925BK NEGRA",
+    "image_url": "http://190.183.223.6/gold/images/gab/DK-925BK.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "2b2942e0-8e16-4f63-ac0f-91ac18c5f20a",
+    "codigo": "HW-20251204-171219-2570406",
+    "producto": "SWTICH D-LINK DGS-1008A 8-PORT 10/100/1000MBPS UNMANAGED",
+    "image_url": "http://190.183.223.6/gold/images/red/DGS-1008A.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "9a1a1f0a-a014-45b0-9af3-385492fafcca",
+    "codigo": "HW-20251204-171219-0620409",
+    "producto": "SOPORTE TV/LCD 23 A 42 VESA 200X200 IT-F22",
+    "image_url": "http://190.183.223.6/gold/images/varios/IT-F22.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "78ac1985-3c4a-47da-a85b-43500d1bfa96",
+    "codigo": "HW-20251204-171220-2510410",
+    "producto": "SOPORTE MONITOR MOVIL VESA 100X100 IT-TS215V",
+    "image_url": "http://190.183.223.6/gold/images/%20varios/IT-TS215V.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "422a373b-098e-46ca-b52f-e794b7ef44d0",
+    "codigo": "HW-20251204-171220-1470412",
+    "producto": "SOPORTE MONITOR MOVIL VESA  IT-TSE44 200x200",
+    "image_url": "http://190.183.223.6/gold/images/%20varios/IT-TSE44.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "fe18ee26-29dd-4bbd-839a-56bef8459b53",
+    "codigo": "HW-20251204-171222-1110418",
+    "producto": "SOPORTE  MONOPOD ROSA SELFIE  BLUETOOTH",
+    "image_url": "http://190.183.223.6/gold/images/varios/MONOROSA.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "6efac7aa-16d7-4150-9742-7e2515f53695",
+    "codigo": "HW-20251204-171222-5050419",
+    "producto": "SOFT WINDOWS HOME 64B COEM 1PK SPANISH FISICO SIN DVD",
+    "image_url": "http://190.183.223.6/gold/images/soft/win11HOME.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "e8d12768-0700-4963-8638-f33d2bcecbc1",
+    "codigo": "HW-20251204-171223-8040421",
+    "producto": "TABLETA GENIUS MOUSEPEN I608X",
+    "image_url": "http://190.183.223.6/gold/images/tecla/tabletI608x.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "49f45e27-8567-4723-b0bc-715ffe1523b7",
+    "codigo": "HW-20251204-171223-0930423",
+    "producto": "TECLADO USB ESPAÑOL  108 TECLAS  KB-US9851S",
+    "image_url": "http://190.183.223.6/gold/images/tecla/KB-US9851S.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "930a5bd2-b5a7-45f1-9b8a-8f34b9ad43dc",
+    "codigo": "HW-20251204-171223-1480424",
+    "producto": "TECLADO GENIUS SMART KB-113  USB",
+    "image_url": "http://190.183.223.6/gold/images/tecla/GENIUSKB116.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "6869014f-7223-4107-a5d9-d75f7448ab4d",
+    "codigo": "HW-20251204-171224-8260425",
+    "producto": "TECLADO  LOGITECH  K120 USB  SILENCIOSO",
+    "image_url": "http://190.183.223.6/gold/images/tecla/K120.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "a191fb65-dde2-400e-a951-d4232ddd53f6",
+    "codigo": "HW-20251204-171225-1970430",
+    "producto": "TECLADO GENIUS SLIMSTAR 7200 SP BLACK WIRELESS",
+    "image_url": "http://190.183.223.6/gold/images/tecla/GENIUS7230.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "a0970dc5-d24c-481c-953b-f2a622cde00f",
+    "codigo": "HW-20251204-171226-8630432",
+    "producto": "TECLADO + MOUSE GENIUS MULTIMEDIA KM-100Se USB BLACK",
+    "image_url": "http://190.183.223.6/gold/images/tecla/KM100se.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "eb14cb18-eb9e-4b2d-b012-e560acf48dd8",
+    "codigo": "HW-20251204-171226-1930434",
+    "producto": "TECLADO+MOUSE GENIUS KM-8101  WIRELESS",
+    "image_url": "http://190.183.223.6/gold/images/tecla/KM8101.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "0c458882-5ddc-4530-89d1-e8a96c99c007",
+    "codigo": "HW-20251204-171226-6620435",
+    "producto": "TECLADO  + MOUSE LOGITECH  WIRELESS   MK220",
+    "image_url": "http://190.183.223.6/gold/images/tecla/MK220.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "1c1c947a-ce79-4ab9-9497-7627d55a142d",
+    "codigo": "HW-20251204-171246-4230507",
+    "producto": "UPS HIKVISION DS-UPS2000 UPS 2000VA/1200W,220V Backup",
+    "image_url": "http://190.183.223.6/gold/images/tecla/HIK2000.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "0c3c0a7a-5bd6-4e4b-8aaa-c024a3dccb94",
+    "codigo": "HW-20251204-171246-7810508",
+    "producto": "UPS  FORZA FORZA 1000VA 500W NT-1002A",
+    "image_url": "http://190.183.223.6/gold/images/tecla/FORZA1000A.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "f19d5f80-32e9-4e80-a2ba-958ed9e2b2bd",
+    "codigo": "HW-20251204-171246-1350509",
+    "producto": "VENTILADOR CPU COOLER INTEL  ALUMINUM FAN S1200",
+    "image_url": "http://190.183.223.6/gold/images/varios/fan1200.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "d1808aa3-097f-4cc9-b420-a5a649abfa1f",
+    "codigo": "HW-20251204-171246-1300510",
+    "producto": "VENTILADOR CPU COOLER AM4 PERFORMANCE ALUMINUM FAN",
+    "image_url": "http://190.183.223.6/gold/images/varios/fansamd.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "3b0c262d-3aac-4b58-8edf-f2e04a764617",
+    "codigo": "HW-20251204-171247-6530511",
+    "producto": "VENTILADOR COOLER  12 CM  ARGB LED FALCOM AS-01",
+    "image_url": "http://190.183.223.6/gold/images/varios/FALCONAS01.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "7dc8d530-6c13-4a7b-8efe-66193b8f819b",
+    "codigo": "HW-20251204-171247-6630514",
+    "producto": "VGA SAPPHIRE RADEON RX 6400 PULSE LR GDDR6 4G",
+    "image_url": "http://190.183.223.6/gold/images/vga/RX6400SHAOC.jpg",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "id": "18c130e4-2828-4523-ad59-da4ee0bb8b7f",
+    "codigo": "HW-20251204-171248-6890515",
+    "producto": "VGA Sapphire Radeon PULSE RX 7600 OC 8GB",
+    "image_url": "http://190.183.223.6/gold/images/vga/RX7600pulsegamming.jpg",
+    "status": 404,
+    "error": "Not Found"
+  }
+]

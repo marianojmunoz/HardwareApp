@@ -218,6 +218,14 @@ export class ProductGrid {
         this.renderGrid();
     }
 
+    hide() {
+        this.container.style.display = 'none';
+    }
+
+    show() {
+        this.container.style.display = '';
+    }
+
     clear() {
         this.container.innerHTML = '';
     }

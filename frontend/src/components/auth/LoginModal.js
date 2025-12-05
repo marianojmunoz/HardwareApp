@@ -526,6 +526,12 @@ export class LoginModal {
     document.getElementById('signUpSection').style.display = 'none';
     document.getElementById('userProfileSection').style.display = 'none';
     this.clearError('loginError');
+
+    // Clear login form fields
+    const loginForm = document.getElementById('loginForm');
+    if (loginForm) {
+      loginForm.reset();
+    }
   }
 
   showUploadForm() {

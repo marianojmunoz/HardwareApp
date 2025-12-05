@@ -45,16 +45,19 @@ export class ExcelParser {
 
         const mappedProduct = {
             codigo: getValue(excelRow, 'CODIGO') || getValue(excelRow, 'codigo') || '',
+            codigo_arrobapc: getValue(excelRow, 'CODIGO') || getValue(excelRow, 'codigo') || '',
             producto: getValue(excelRow, 'PRODUCTO') || getValue(excelRow, 'producto') || '',
-            categoria: getValue(excelRow, 'CATEGORIA') || getValue(excelRow, 'categoria') || '',
-            sub_categoria: getValue(excelRow, 'SUB-CATEGORIA') || getValue(excelRow, 'sub-categoria') || getValue(excelRow, 'SUB CATEGORIA') || getValue(excelRow, 'sub categoria') || getValue(excelRow, 'SUBCATEGORIA') || getValue(excelRow, 'subcategoria') || '',
+            categoria: getValue(excelRow, 'CATEGORIA') || getValue(excelRow, 'Categoria') || getValue(excelRow, 'categoria') || '',
+            sub_categoria: getValue(excelRow, 'SUB-CATEGORIA') || getValue(excelRow, 'sub-categoria') || getValue(excelRow, 'SUB CATEGORIA') || getValue(excelRow, 'sub categoria') || getValue(excelRow, 'SUBCATEGORIA') || getValue(excelRow, 'Subcategoria') || getValue(excelRow, 'subcategoria') || '',
             garantia: parseInt(getValue(excelRow, 'GARANTIA') || getValue(excelRow, 'garantia') || 0),
             precio_publico: parseFloat(getValue(excelRow, 'PUBLICO') || getValue(excelRow, 'publico') || 0),
             precio_total: parseFloat(getValue(excelRow, 'TOTAL') || getValue(excelRow, 'total') || 0),
             precio_gremio: parseFloat(getValue(excelRow, 'GREMIO') || getValue(excelRow, 'gremio') || 0),
             stock: parseInt(getValue(excelRow, 'STOCK') || getValue(excelRow, 'stock') || 0),
-            image_url: getValue(excelRow, 'IMAGEN') || getValue(excelRow, 'imagen') || getValue(excelRow, 'IMAGE_URL') || getValue(excelRow, 'image_url') || getValue(excelRow, 'URL') || getValue(excelRow, 'url') || null
+            image_url: getValue(excelRow, 'IMAGEN') || getValue(excelRow, 'imagen') || getValue(excelRow, 'IMAGE_URL') || getValue(excelRow, 'image_url') || getValue(excelRow, 'URL') || getValue(excelRow, 'url') || null,
+            es_nuevo: getValue(excelRow, 'Es_Nuevo?') || getValue(excelRow, 'ES_NUEVO') || getValue(excelRow, 'es_nuevo') || getValue(excelRow, 'NUEVO') || 'NO'
         };
+
 
         return mappedProduct;
     }

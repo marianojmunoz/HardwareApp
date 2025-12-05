@@ -31,6 +31,15 @@ export class SupabaseProductRepository {
         return await productApi.delete(id);
     }
 
+    async findByCodigoAndProducto(codigo, producto) {
+        return await productApi.findByCodigoAndProducto(codigo, producto);
+    }
+
+    async updatePrices(id, prices) {
+        const data = await productApi.updatePrices(id, prices);
+        return new Product(data);
+    }
+
     async deleteAll() {
         return await productApi.deleteAll();
     }
