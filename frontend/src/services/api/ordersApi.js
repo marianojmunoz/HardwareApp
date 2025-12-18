@@ -1,9 +1,27 @@
 import { supabase, handleSupabaseError } from './supabaseClient.js';
+import { validateOrder } from '../../utils/validators.js';
 
 export const ordersApi = {
     // Crear una nueva orden con sus items
     async createOrder({ userEmail, items, totalAmount }) {
         try {
+            // Validate order data
+            const orderData = {
+                user_email: userEmail,
+                total_amount: totalAmount,
+                items: items.map(item => ({
+                    product_name: item.product.producto,
+                    quantity: item.quantity,
+                    unit_price: parseFloat(item.product.precio_total),
+                    subtotal: parseFloat(item.product.precio_total) * item.quantity
+                }))
+            };
+
+            const validation = validateOrder(orderData);
+            if (!validation.valid) {
+                throw new Error(`Validation failed: ${validation.errors.join(', ')}`);
+            }
+
             // 1. Crear la orden principal
             const { data: order, error: orderError } = await supabase
                 .from('orders')
@@ -22,12 +40,12 @@ export const ordersApi = {
             }
 
             // 2. Crear los items de la orden
-            const orderItems = items.map(item => ({
+            const orderItems = orderData.items.map(item => ({
                 order_id: order.id,
-                product_name: item.product.producto,
+                product_name: item.product_name,
                 quantity: item.quantity,
-                unit_price: parseFloat(item.product.precio_total),
-                subtotal: parseFloat(item.product.precio_total) * item.quantity
+                unit_price: item.unit_price,
+                subtotal: item.subtotal
             }));
 
             const { data: createdItems, error: itemsError } = await supabase

@@ -1,4 +1,5 @@
 import { formatPrice, formatGarantia } from '../../utils/formatters.js';
+import { escapeHtml } from '../../utils/sanitizer.js';
 
 export class ProductCard {
   constructor(product, isAdmin = false) {
@@ -27,6 +28,10 @@ export class ProductCard {
     const hasImage = this.product.hasImage();
     const categoryLabel = this.product.categoria || 'Hardware';
 
+    // Sanitize user-controlled content to prevent XSS
+    const safeName = escapeHtml(this.product.producto);
+    const safeCategory = escapeHtml(categoryLabel);
+
     return `
         ${this.isAdmin ? `
             <div class="admin-actions">
@@ -37,7 +42,7 @@ export class ProductCard {
 
         ${hasImage ? `
             <div class="product-image">
-                <img src="${this.product.image_url}" alt="${this.product.producto}" />
+                <img src="${escapeHtml(this.product.image_url)}" alt="${safeName}" />
             </div>
         ` : `
             <div class="product-image-placeholder">
@@ -46,8 +51,8 @@ export class ProductCard {
         `}
         
         <div class="product-content">
-            <span class="product-category-label">${categoryLabel}</span>
-            <h3 class="product-name" title="${this.product.producto}">${this.product.producto}</h3>
+            <span class="product-category-label">${safeCategory}</span>
+            <h3 class="product-name" title="${safeName}">${safeName}</h3>
             
             <div class="product-footer">
                 <div class="product-price-total">

@@ -1,4 +1,5 @@
 import { supabase, handleSupabaseError } from './supabaseClient.js';
+import { validateProduct } from '../../utils/validators.js';
 
 export const productApi = {
     // Obtener todos los productos
@@ -29,6 +30,12 @@ export const productApi = {
 
     // Crear producto
     async create(product) {
+        // Validate product data
+        const validation = validateProduct(product);
+        if (!validation.valid) {
+            throw new Error(`Validation failed: ${validation.errors.join(', ')}`);
+        }
+
         const { data, error } = await supabase
             .from('products')
             .insert([product])
@@ -41,9 +48,30 @@ export const productApi = {
 
     // Crear múltiples productos (desde Excel)
     async createMany(products) {
+        // Validate all products
+        const validProducts = [];
+        const errors = [];
+
+        products.forEach((product, index) => {
+            const validation = validateProduct(product);
+            if (validation.valid) {
+                validProducts.push(product);
+            } else {
+                errors.push(`Product ${index + 1} (${product.producto || 'unknown'}): ${validation.errors.join(', ')}`);
+            }
+        });
+
+        if (errors.length > 0) {
+            console.warn('Some products failed validation:', errors);
+        }
+
+        if (validProducts.length === 0) {
+            throw new Error('No valid products to insert');
+        }
+
         const { data, error } = await supabase
             .from('products')
-            .insert(products)
+            .insert(validProducts)
             .select();
 
         handleSupabaseError(error);
