@@ -43,6 +43,8 @@ export class ExcelParser {
             return value;
         };
 
+        const precioPublico = parseFloat(getValue(excelRow, 'PUBLICO') || getValue(excelRow, 'publico') || 0);
+
         const mappedProduct = {
             codigo: getValue(excelRow, 'CODIGO') || getValue(excelRow, 'codigo') || '',
             codigo_arrobapc: getValue(excelRow, 'CODIGO') || getValue(excelRow, 'codigo') || '',
@@ -50,8 +52,8 @@ export class ExcelParser {
             categoria: getValue(excelRow, 'CATEGORIA') || getValue(excelRow, 'Categoria') || getValue(excelRow, 'categoria') || '',
             sub_categoria: getValue(excelRow, 'SUB-CATEGORIA') || getValue(excelRow, 'sub-categoria') || getValue(excelRow, 'SUB CATEGORIA') || getValue(excelRow, 'sub categoria') || getValue(excelRow, 'SUBCATEGORIA') || getValue(excelRow, 'Subcategoria') || getValue(excelRow, 'subcategoria') || '',
             garantia: parseInt(getValue(excelRow, 'GARANTIA') || getValue(excelRow, 'garantia') || 0),
-            precio_publico: parseFloat(getValue(excelRow, 'PUBLICO') || getValue(excelRow, 'publico') || 0),
-            precio_total: parseFloat(getValue(excelRow, 'TOTAL') || getValue(excelRow, 'total') || 0),
+            precio_publico: precioPublico,
+            precio_total: precioPublico, // Siempre igual a precio_publico
             precio_gremio: parseFloat(getValue(excelRow, 'GREMIO') || getValue(excelRow, 'gremio') || 0),
             stock: parseInt(getValue(excelRow, 'STOCK') || getValue(excelRow, 'stock') || 0),
             image_url: getValue(excelRow, 'IMAGEN') || getValue(excelRow, 'imagen') || getValue(excelRow, 'IMAGE_URL') || getValue(excelRow, 'image_url') || getValue(excelRow, 'URL') || getValue(excelRow, 'url') || null,
