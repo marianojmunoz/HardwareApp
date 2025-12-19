@@ -69,6 +69,9 @@ class HardwareCatalogApp {
 
     async init() {
 
+        // Setup mobile menu functionality
+        this.setupMobileMenu();
+
         // Setup event listeners
         this.setupEventListeners();
 
@@ -82,6 +85,38 @@ class HardwareCatalogApp {
         if (this.isAdmin) {
             await this.updatePendingOrdersCount();
         }
+    }
+
+    setupMobileMenu() {
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.querySelector('.sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+        if (!menuToggle || !sidebar || !sidebarOverlay) return;
+
+        // Toggle sidebar on hamburger button click
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+            sidebarOverlay.classList.toggle('active');
+        });
+
+        // Close sidebar when clicking overlay
+        sidebarOverlay.addEventListener('click', () => {
+            sidebar.classList.remove('open');
+            sidebarOverlay.classList.remove('active');
+        });
+
+        // Close sidebar when clicking a category link (mobile only)
+        const categoryLinks = sidebar.querySelectorAll('.nav-link, .sub-link');
+        categoryLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                // Only auto-close on mobile (screen width < 768px)
+                if (window.innerWidth < 768) {
+                    sidebar.classList.remove('open');
+                    sidebarOverlay.classList.remove('active');
+                }
+            });
+        });
     }
 
     setupEventListeners() {

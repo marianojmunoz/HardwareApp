@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
   <meta name="description" content="Catálogo de productos de hardware - Encuentra los mejores productos al mejor precio">
   <title>Catálogo de Hardware</title>
   
@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="/login-modal.css">
   <link rel="stylesheet" href="/orders.css">
   <link rel="stylesheet" href="/page-header-fix.css">
+  <link rel="stylesheet" href="/mobile-responsive.css">
 </head>
 <body>
   <div class="app-layout">
@@ -55,12 +56,17 @@
         </div>
         
         <div class="header-actions">
-          <div id="ordersButtonContainer"></div>
-          <div id="cartIconContainer"></div>
-          <button class="btn-admin-header" id="adminBtn">
-            <span class="icon">🔐</span>
-            <span>Login</span>
+          <button class="menu-toggle-btn" id="menuToggle" aria-label="Abrir menú">
+            <span>☰</span>
           </button>
+          <div style="display: flex; gap: 0.5rem; margin-left: auto;">
+            <div id="ordersButtonContainer"></div>
+            <div id="cartIconContainer"></div>
+            <button class="btn-admin-header" id="adminBtn">
+              <span class="icon">🔐</span>
+              <span>Login</span>
+            </button>
+          </div>
         </div>
       </header>
 
@@ -106,6 +112,9 @@
       </div>
     </main>
   </div>
+
+  <!-- Overlay para sidebar móvil -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
   <!-- App Script (ES6 Module) -->
   <script type="module" src="/src/main.js?v=1"></script>

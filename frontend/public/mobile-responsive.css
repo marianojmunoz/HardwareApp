@@ -1,0 +1,495 @@
+/* ============================================
+   MOBILE RESPONSIVE STYLES FOR HARDWAREAPP
+   ============================================
+   
+   Este archivo contiene todos los estilos responsive
+   para adaptar la aplicación a dispositivos móviles.
+   
+   Breakpoints:
+   - 480px: Móvil pequeño
+   - 768px: Móvil estándar
+   - 1024px: Tablet
+   ============================================ */
+
+/* ============================================
+   SIDEBAR MÓVIL - Drawer/Hamburger Menu
+   ============================================ */
+
+/* Botón hamburguesa (oculto en desktop) */
+.menu-toggle-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: var(--text-primary);
+    transition: transform var(--transition-base);
+}
+
+.menu-toggle-btn:active {
+    transform: scale(0.95);
+}
+
+/* Overlay oscuro para sidebar móvil */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.sidebar-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* ============================================
+   TABLET (max-width: 1024px)
+   ============================================ */
+@media (max-width: 1024px) {
+
+    /* Reducir ancho de sidebar */
+    :root {
+        --sidebar-width: 240px;
+    }
+
+    /* Grid de productos: 3 columnas */
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ============================================
+   MÓVIL ESTÁNDAR (max-width: 768px)
+   ============================================ */
+@media (max-width: 768px) {
+
+    /* ===== VARIABLES MÓVILES ===== */
+    :root {
+        --spacing-sm: 0.75rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 1.25rem;
+        --header-height: auto;
+    }
+
+    /* ===== LAYOUT PRINCIPAL ===== */
+    .app-layout {
+        grid-template-columns: 1fr;
+        /* Solo contenido principal */
+    }
+
+    /* ===== SIDEBAR COMO DRAWER ===== */
+    .sidebar {
+        position: fixed;
+        left: -280px;
+        /* Oculta por defecto */
+        top: 0;
+        width: 280px;
+        transition: left 0.3s ease;
+        z-index: 100;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar.open {
+        left: 0;
+        /* Visible cuando se activa */
+    }
+
+    /* ===== BOTÓN HAMBURGUESA ===== */
+    .menu-toggle-btn {
+        display: block;
+    }
+
+    /* ===== HEADER ===== */
+    .top-header {
+        padding: var(--spacing-sm);
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+    }
+
+    .search-container {
+        order: 2;
+        width: 100%;
+        max-width: 100%;
+        margin-top: var(--spacing-sm);
+    }
+
+    .header-actions {
+        order: 1;
+        gap: 0.5rem;
+        padding-right: 0;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    /* ===== CONTENIDO PRINCIPAL ===== */
+    .content-scroll {
+        padding: var(--spacing-sm);
+    }
+
+    /* ===== PAGE HEADER ===== */
+    .page-header {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        padding: var(--spacing-sm);
+    }
+
+    .page-title-group h1 {
+        font-size: 1.5rem;
+    }
+
+    .product-count {
+        font-size: 0.85rem;
+    }
+
+    .sort-controls {
+        width: 100%;
+    }
+
+    .sort-select {
+        width: 100%;
+        padding: 0.75rem;
+    }
+
+    /* ===== GRID DE PRODUCTOS: 2 COLUMNAS ===== */
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-sm);
+    }
+
+    /* ===== TARJETAS DE PRODUCTOS ===== */
+    .product-card {
+        padding: var(--spacing-sm);
+    }
+
+    .product-image {
+        height: 140px;
+    }
+
+    .product-image-placeholder {
+        height: 140px;
+        font-size: 2rem;
+    }
+
+    .product-name {
+        font-size: 0.9rem;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        line-height: 1.3;
+    }
+
+    .product-category-label {
+        font-size: 0.7rem;
+    }
+
+    .product-prices {
+        gap: 0.25rem;
+        padding: 0.5rem;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .price-value {
+        font-size: 1rem;
+    }
+
+    .price-label {
+        font-size: 0.7rem;
+    }
+
+    /* Ocultar código de producto para ahorrar espacio */
+    .product-code {
+        display: none;
+    }
+
+    .product-details {
+        gap: 0.5rem;
+    }
+
+    .detail-item {
+        font-size: 0.8rem;
+        padding: 0.25rem;
+    }
+
+    /* ===== BOTONES TÁCTILES MÁS GRANDES ===== */
+    .btn {
+        min-height: 44px;
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .btn-add-cart {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.85rem;
+    }
+
+    .btn-admin-header {
+        width: 44px;
+        height: 44px;
+    }
+
+    /* ===== MODAL DE CARRITO FULLSCREEN ===== */
+    .cart-modal-content {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .cart-modal-body {
+        padding: var(--spacing-sm);
+    }
+
+    .cart-item {
+        padding: var(--spacing-sm);
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .cart-item-name {
+        font-size: 0.9rem;
+    }
+
+    .quantity-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+
+    /* ===== MODALES GENERALES ===== */
+    .modal-content {
+        width: 95%;
+        padding: var(--spacing-md);
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    /* ===== PAGINACIÓN ===== */
+    .pagination-controls {
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+    }
+
+    .btn-pagination {
+        flex: 1;
+        min-width: 80px;
+        padding: 0.5rem 0.75rem;
+    }
+
+    .items-per-page {
+        width: 100%;
+        justify-content: center;
+        margin-top: var(--spacing-sm);
+    }
+
+    .page-info {
+        font-size: 0.85rem;
+    }
+
+    /* ===== SECCIÓN DE CONTACTO ===== */
+    .contact-section {
+        padding: var(--spacing-md);
+        margin-top: 2rem;
+    }
+
+    .contact-title {
+        font-size: 1.3rem;
+    }
+
+    .contact-info {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    .contact-item {
+        width: 100%;
+        justify-content: center;
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+    }
+
+    /* ===== ACCIONES DE ADMIN ===== */
+    .admin-actions {
+        gap: 0.5rem;
+        margin-top: var(--spacing-sm);
+        padding-top: var(--spacing-sm);
+    }
+
+    .btn-admin-action {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.85rem;
+    }
+
+    /* ===== SUMMARY MODAL ===== */
+    .summary-stats {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+
+    .stat-card {
+        padding: var(--spacing-sm);
+    }
+
+    .stat-icon {
+        font-size: 2rem;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+    }
+
+    .price-stats {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+
+    .price-stats span {
+        min-width: 100%;
+    }
+
+    /* ===== USER PROFILE ===== */
+    .user-profile {
+        padding: 0.25rem 0.5rem;
+    }
+
+    .user-name {
+        display: none;
+        /* Ocultar nombre, solo mostrar avatar */
+    }
+
+    /* ===== TIPOGRAFÍA ===== */
+    h1 {
+        font-size: clamp(1.5rem, 5vw, 2rem);
+    }
+
+    h2 {
+        font-size: clamp(1.3rem, 4vw, 1.8rem);
+    }
+
+    .search-input {
+        font-size: 16px;
+        /* Evita zoom automático en iOS */
+        padding: 0.75rem 1rem 0.75rem 2.5rem;
+    }
+}
+
+/* ============================================
+   MÓVIL PEQUEÑO (max-width: 480px)
+   ============================================ */
+@media (max-width: 480px) {
+
+    /* ===== GRID DE PRODUCTOS: 1 COLUMNA ===== */
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* ===== PRODUCTOS MÁS GRANDES EN UNA COLUMNA ===== */
+    .product-card {
+        padding: var(--spacing-md);
+    }
+
+    .product-image,
+    .product-image-placeholder {
+        height: 180px;
+    }
+
+    .product-name {
+        font-size: 1rem;
+    }
+
+    /* ===== PRECIOS APILADOS VERTICALMENTE ===== */
+    .product-prices {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .price-value {
+        font-size: 1.2rem;
+    }
+
+    /* ===== HEADER COMPACTO ===== */
+    .header-actions {
+        gap: 0.25rem;
+    }
+
+    .btn-admin-header span:last-child {
+        display: none;
+        /* Ocultar texto "Login" */
+    }
+
+    /* ===== MODALES MÁS COMPACTOS ===== */
+    .modal-content {
+        padding: var(--spacing-sm);
+    }
+
+    /* ===== BOTONES DE PAGINACIÓN ===== */
+    .btn-pagination {
+        font-size: 0.85rem;
+        padding: 0.5rem;
+    }
+}
+
+/* ============================================
+   LANDSCAPE EN MÓVILES
+   ============================================ */
+@media (max-width: 768px) and (orientation: landscape) {
+    .top-header {
+        padding: 0.5rem var(--spacing-sm);
+    }
+
+    .sidebar {
+        width: 240px;
+        left: -240px;
+    }
+
+    .product-image,
+    .product-image-placeholder {
+        height: 120px;
+    }
+
+    .modal-content {
+        max-height: 85vh;
+    }
+}
+
+/* ============================================
+   MEJORAS PARA PANTALLAS EXTRA GRANDES
+   ============================================ */
+@media (min-width: 1920px) {
+    .products-grid {
+        grid-template-columns: repeat(6, 1fr);
+        max-width: 2400px;
+        margin: 0 auto;
+    }
+
+    .container {
+        max-width: 2400px;
+    }
+}
+
+/* ============================================
+   UTILIDADES DE ACCESIBILIDAD TÁCTIL
+   ============================================ */
+@media (max-width: 768px) {
+
+    /* Asegurar que todos los elementos interactivos sean táctiles */
+    button,
+    a,
+    input,
+    select,
+    .nav-link,
+    .sub-link {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+
+    /* Aumentar área de tap para checkboxes y radios */
+    input[type="checkbox"],
+    input[type="radio"] {
+        min-width: 24px;
+        min-height: 24px;
+    }
+}

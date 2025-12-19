@@ -9,6 +9,7 @@ export default defineConfig({
         emptyOutDir: true
     },
     server: {
+        host: '0.0.0.0', // Permite acceso desde otros dispositivos en la red
         port: 3000,
         open: true
     }
